@@ -1,0 +1,2 @@
+require "bloom_rates"
+
