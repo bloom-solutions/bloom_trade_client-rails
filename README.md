@@ -33,6 +33,18 @@ After mounting run migrations
 rails bloom_rates:install:migrations # This creates the ExchangeRate table which will store exchange rate history for currencies.
 ```
 
+### Configuration
+
+In your initializer you can configure the gem
+
+```
+# config/initializers/bloom_rates
+
+BloomRates.configure do |c|
+  c.publisher_url = "https://whatever.com"
+end
+```
+
 ## Contributing
 Contribution directions go here.
 
