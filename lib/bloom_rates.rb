@@ -9,6 +9,7 @@ module BloomRates
 
    with_configuration do
      has :publisher_url, classes: String, default: "https://trade.bloom.solutions"
+     has :functional_currency, classes: String, default: "PHP"
    end
 
   def self.setup(channel:)
