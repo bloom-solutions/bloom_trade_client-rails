@@ -3,15 +3,16 @@ module BloomRates
     class Convert
 
       def self.call(
-        base_currency,
-        counter_currency,
-        reserve_currency = BloomRates.configuration.reserve_currency
+        base_currency:,
+        counter_currency:,
+        reserve_currency: BloomRates.configuration.reserve_currency,
+        type: "mid"
       )
-        rate = direct_rate(base_currency, counter_currency)
+        rate = direct_rate(type, base_currency, counter_currency)
         return rate if rate
 
-        origin_rate = direct_rate(base_currency, reserve_currency)
-        destination_rate = direct_rate(reserve_currency, counter_currency)
+        origin_rate = direct_rate(type, base_currency, reserve_currency)
+        destination_rate = direct_rate(type, reserve_currency, counter_currency)
 
         return origin_rate * destination_rate if origin_rate && destination_rate
 
@@ -23,16 +24,18 @@ module BloomRates
 
       private
 
-      def self.direct_rate(base_currency, counter_currency)
-        return 1.0 if base_currency == counter_currency
+      def self.direct_rate(type, base_currency, counter_currency)
+        return nil unless %w(buy sell mid).include? type
 
-        exchange_rate = ExchangeRate.
-          find_by(base_currency: base_currency, counter_currency: counter_currency)
-        return exchange_rate.mid if exchange_rate
-
-        reversed_rate = ExchangeRate.
-          find_by(base_currency: counter_currency, counter_currency: base_currency)
-        return 1.0 / reversed_rate.mid if reversed_rate
+        [
+          "BloomRates",
+          "ExchangeRates",
+          "Conversion",
+          type.capitalize
+        ].join("::").constantize.(
+          base_currency,
+          counter_currency,
+        )
       end
     end
   end

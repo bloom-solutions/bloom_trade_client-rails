@@ -7,10 +7,10 @@ require "bloom_rates/engine"
 module BloomRates
   include GemConfig::Base
 
-   with_configuration do
-     has :publisher_url, classes: String, default: "https://trade.bloom.solutions"
-     has :functional_currency, classes: String, default: "PHP"
-   end
+  with_configuration do
+    has :publisher_url, classes: String, default: "https://trade.bloom.solutions"
+    has :reserve_currency, classes: String, default: "PHP"
+  end
 
   def self.setup(channel:)
     client = MessageBus::Client.new(BloomRates.configuration.publisher_url)

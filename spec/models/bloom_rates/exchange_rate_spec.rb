@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 module BloomRates
   RSpec.describe ExchangeRate, type: :model do

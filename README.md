@@ -42,6 +42,7 @@ In your initializer you can configure the gem
 
 BloomRates.configure do |c|
   c.publisher_url = "https://whatever.com"
+  c.reserve_currency = "PHP"
 end
 ```
 
