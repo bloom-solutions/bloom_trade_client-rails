@@ -1,6 +1,16 @@
 require "spec_helper"
 
 module BloomRates
+  describe "configuration defaults" do
+    it "has a default publisher_url" do
+      expect(BloomRates.configuration.publisher_url).to eq "https://trade.bloom.solutions"
+    end
+
+    it "has a default reserve_currency" do
+      expect(BloomRates.configuration.reserve_currency).to eq "PHP"
+    end
+  end
+
   describe ".setup" do
     let(:client) { double(MessageBus::Client) }
 
