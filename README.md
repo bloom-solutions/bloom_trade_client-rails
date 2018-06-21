@@ -14,8 +14,11 @@ gem 'bloom_rates-rails'
 
 Add an initializer `config/initializers/bloom_rates.rb`
 
-```
-BloomRates.setup(channel: 'price_changed') # Creates a subscription to the bloom trade server. By subscribing to the `price_changed` channel, whenever exchange rates are updated, your local database will get the latest exchange rates.
+```ruby
+# Creates a subscription to the bloom trade server. Whenever exchange rates
+# are updated, your local database will get the latest exchange rates.
+
+BloomRates.setup
 ```
 
 And then execute:
@@ -23,14 +26,18 @@ And then execute:
 $ bundle
 ```
 
-In your `config/routes.rb````
+In your `config/routes.rb`
+```ruby
 mount BloomRates::Engine => "/bloom_rates"
 ```
 
 After mounting run migrations
 
-```
-rails bloom_rates:install:migrations # This creates the ExchangeRate table which will store exchange rate history for currencies.
+```bash
+# This creates the ExchangeRate table which will store exchange rate
+# history for currencies.
+
+rails bloom_rates:install:migrations
 ```
 
 ### Configuration
