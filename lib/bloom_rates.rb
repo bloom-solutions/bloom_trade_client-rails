@@ -1,18 +1,19 @@
-require "light-service"
-require "virtus"
-require "gem_config"
-
-require "bloom_rates/engine"
+require 'light-service'
+require 'virtus'
+require 'gem_config'
+require 'bloom_rates/engine'
 
 module BloomRates
   include GemConfig::Base
 
+  DEFAULT_CHANNEL = '/exchange_rates'.freeze
+
   with_configuration do
-    has :publisher_url, classes: String, default: "https://trade.bloom.solutions"
-    has :reserve_currency, classes: String, default: "PHP"
+    has :publisher_url, classes: String, default: 'https://trade.bloom.solutions'
+    has :reserve_currency, classes: String, default: 'PHP'
   end
 
-  def self.setup(channel:)
+  def self.setup(channel = DEFAULT_CHANNEL)
     client = MessageBus::Client.new(BloomRates.configuration.publisher_url)
 
     client.subscribe(channel) do |payload|

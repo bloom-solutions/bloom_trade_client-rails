@@ -19,10 +19,10 @@ module BloomRates
         "https://trade.bloom.solutions"
       ).and_return(client)
 
-      expect(client).to receive(:subscribe).with("/exchange_rates")
+      expect(client).to receive(:subscribe)
       expect(client).to receive(:start)
 
-      BloomRates.setup(channel: "/exchange_rates")
+      BloomRates.setup
     end
   end
 end
