@@ -15,9 +15,11 @@ module BloomRates
 
   def self.setup(channel = DEFAULT_CHANNEL)
     client = MessageBus::Client.new(BloomRates.configuration.publisher_url)
+    last_id = BloomRates::MessageBusLastIdSetter.()
 
-    client.subscribe(channel) do |payload|
-      ExchangeRates::Sync.(payload)
+    client.subscribe(channel, last_id) do |payload, last_id|
+      BloomRates::ExchangeRates::Sync.(payload)
+      BloomRates::MessageBusLastId.create!(last_id: last_id)
     end
 
     client.start
