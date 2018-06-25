@@ -5,15 +5,24 @@ Mountable Exchange Rates client for market data coming from Bloom Trade
 
 ### Installation
 
-Add this line to your application's Gemfile:
-
+1. Add this line to your application's Gemfile:
 ```ruby
 gem 'message_bus-client', git: 'https://github.com/bloom-solutions/message_bus-client', ref: 'bloom_changes'
 gem 'bloom_rates-rails'
 ```
 
-Add an initializer `config/initializers/bloom_rates.rb`
+2. Copy needed migrations
+```bash
+rails bloom_rates:install:migrations
+```
 
+3. Enable the BloomRates engine by mounting in your routes
+In your `config/routes.rb`
+```ruby
+mount BloomRates::Engine => "/bloom_rates"
+```
+
+4. Add an initializer `config/initializers/bloom_rates.rb`
 ```ruby
 # Creates a subscription to the bloom trade server. Whenever exchange rates
 # are updated, your local database will get the latest exchange rates.
@@ -21,36 +30,9 @@ Add an initializer `config/initializers/bloom_rates.rb`
 BloomRates.setup
 ```
 
-And then execute:
+5. Update gems
 ```bash
 $ bundle
-```
-
-In your `config/routes.rb`
-```ruby
-mount BloomRates::Engine => "/bloom_rates"
-```
-
-After mounting run migrations
-
-```bash
-# This creates the ExchangeRate table which will store exchange rate
-# history for currencies.
-
-rails bloom_rates:install:migrations
-```
-
-### Configuration
-
-In your initializer you can configure the gem
-
-```
-# config/initializers/bloom_rates
-
-BloomRates.configure do |c|
-  c.publisher_url = "https://whatever.com"
-  c.reserve_currency = "PHP"
-end
 ```
 
 ## Contributing
