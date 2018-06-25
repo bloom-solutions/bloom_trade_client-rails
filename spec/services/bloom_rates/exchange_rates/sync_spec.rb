@@ -35,10 +35,10 @@ module BloomRates
       it "receives a payload and saves or updates the Exchange Rate" do
         described_class.(exchange_rates_payload)
 
-        expect_created_rates = ExchangeRate.all
+        expect_created_rates = BloomRates::ExchangeRate.all
         expect(expect_created_rates.count).to eq 3
 
-        btcusd = ExchangeRate.find_by(
+        btcusd = BloomRates::ExchangeRate.find_by(
           base_currency: "BTC",
           counter_currency: "USD",
         )
@@ -48,7 +48,7 @@ module BloomRates
         expect(btcusd.sell).to eq 8100
         expect(btcusd.mid).to eq 8000
 
-        audusd = ExchangeRate.find_by(
+        audusd = BloomRates::ExchangeRate.find_by(
           base_currency: "AUD",
           counter_currency: "USD",
         )
@@ -58,7 +58,7 @@ module BloomRates
         expect(audusd.sell).to eq 0.79
         expect(audusd.mid).to eq 0.79
 
-        usdphp = ExchangeRate.find_by(
+        usdphp = BloomRates::ExchangeRate.find_by(
           base_currency: "USD",
           counter_currency: "PHP",
         )
@@ -83,10 +83,10 @@ module BloomRates
         it "updates the old rate" do
           described_class.(exchange_rates_payload)
 
-          expect_created_rates = ExchangeRate.all
+          expect_created_rates = BloomRates::ExchangeRate.all
           expect(expect_created_rates.count).to eq 3
 
-          btcusd = ExchangeRate.find_by(
+          btcusd = BloomRates::ExchangeRate.find_by(
             base_currency: "BTC",
             counter_currency: "USD",
           )
