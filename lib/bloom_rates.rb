@@ -11,6 +11,7 @@ module BloomRates
   with_configuration do
     has :publisher_url, classes: String, default: 'https://trade.bloom.solutions'
     has :reserve_currency, classes: String, default: 'PHP'
+    has :bloom_trade_api_token, classes: String
   end
 
   def self.setup(channel = DEFAULT_CHANNEL)

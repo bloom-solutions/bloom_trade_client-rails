@@ -3,7 +3,7 @@ module BloomRates
     class Client
       include HTTParty
 
-      base_uri "https://staging.trade.bloom.solutions"
+      base_uri BloomRates.configuration.publisher_url
 
       def get_quote(quote = {})
         query_string = {
@@ -27,7 +27,8 @@ module BloomRates
       private
 
       def auth_header
-        { "Authorization" => "Bearer #{ENV["BLOOM_TRADE_API_TOKEN"]}" }
+        token = BloomRates.configuration.bloom_trade_api_token
+        { "Authorization" => "Bearer #{token}" }
       end
 
     end
