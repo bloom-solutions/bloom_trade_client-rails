@@ -3,7 +3,7 @@ module BloomRates
     class Client
       include HTTParty
 
-      base_uri BloomRates.configuration.publisher_url
+      base_uri BloomRates.configuration.bloom_trade_url
 
       def get_quote(quote = {})
         query_string = {

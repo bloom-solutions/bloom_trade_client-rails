@@ -2,8 +2,8 @@ require "spec_helper"
 
 module BloomRates
   describe "configuration defaults" do
-    it "has a default publisher_url" do
-      expect(BloomRates.configuration.publisher_url).to eq "https://trade.bloom.solutions"
+    it "has a default bloom_trade_url" do
+      expect(BloomRates.configuration.bloom_trade_url).to eq "https://trade.bloom.solutions"
     end
 
     it "has a default reserve_currency" do
