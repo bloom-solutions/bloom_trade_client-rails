@@ -6,6 +6,8 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.3.0] - 2017-07-04
 - Change `publisher_url` to be `bloom_trade_url`
 - Add `BloomRates::Client` for bloom_trade api consumption
 - Add `BloomRates.convert` to convert between currencies
