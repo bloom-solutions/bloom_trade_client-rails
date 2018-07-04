@@ -35,6 +35,12 @@ BloomRates.setup
 $ bundle
 ```
 
+6. Requesting a Quote from Bloom Trade
+```ruby
+params = { base_currency: "BTC", counter_currency: "PHP", quote_type: "buy", amount: 0.50 }
+result = BloomRates::Client.new.get_quote(params)
+```
+
 ## Contributing
 Contribution directions go here.
 

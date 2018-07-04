@@ -5,7 +5,8 @@ require File.expand_path('../dummy/config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require "pry"
-require 'rspec/rails'
+require "rspec/rails"
+require "httparty"
 
 Dir[BloomRates::Engine.root.join('spec/support/**/*.rb')].each do |f|
   require f
