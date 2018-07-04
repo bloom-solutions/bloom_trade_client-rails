@@ -14,20 +14,21 @@ module BloomRates
         }
       }
 
-      response = self.class.post(
+      self.class.post(
         "/api/v1/quotes",
-        body: query_string,
+        body: query_string.to_json,
         headers: auth_header
       )
-
-      JSON.parse(response.body)
     end
 
     private
 
     def auth_header
       token = BloomRates.configuration.bloom_trade_api_token
-      { "Authorization" => "Bearer #{token}" }
+      { 
+        "Authorization" => "Bearer #{token}",
+        "Content-Type"  => "application/json"
+      }
     end
 
   end

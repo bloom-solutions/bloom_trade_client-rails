@@ -1,0 +1,44 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging.trade.bloom.solutions/api/v1/quotes
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":1.5}}'
+    headers:
+      Authorization:
+      - Bearer eyJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lcl9pZCI6MiwiaXNzIjoiYmxvb21fdHJhZGUgcHJvZHVjdGlvbiIsInN1YiI6ImFwaSJ9.HGrB_6jTy-5gbPZqgAkx0O9NpJSmhY40lHAg0gZE1G8
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"34d46d3da5e8b2078411b693be58d344"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 77f0148a-b49f-4880-84b5-a91a39c87125
+      X-Runtime:
+      - '0.021628'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Wed, 04 Jul 2018 13:40:21 GMT
+      Content-Length:
+      - '177'
+    body:
+      encoding: UTF-8
+      string: '{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5","price":"359192.755251170712","total":"538789.132876756068","expiration_timestamp":1530711921}'
+    http_version: 
+  recorded_at: Wed, 04 Jul 2018 13:40:21 GMT
+recorded_with: VCR 4.0.0

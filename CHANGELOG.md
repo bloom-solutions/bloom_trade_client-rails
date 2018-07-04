@@ -6,6 +6,7 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Return actual response from bloom-trade endpoint
 
 ## [0.3.0] - 2017-07-04
 - Change `publisher_url` to be `bloom_trade_url`
