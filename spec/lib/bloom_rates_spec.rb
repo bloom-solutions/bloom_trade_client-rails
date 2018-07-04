@@ -25,4 +25,14 @@ module BloomRates
       BloomRates.setup
     end
   end
+
+  describe ".convert" do
+    it "calls the BloomRates::ExchangeRates::Convert#call" do
+      expect(BloomRates::ExchangeRates::Convert).to receive(:call)
+
+      BloomRates.convert(
+        base_currency: "BTC", counter_currency: "PHP", type: "buy"
+      )
+    end
+  end
 end

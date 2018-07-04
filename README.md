@@ -35,10 +35,20 @@ BloomRates.setup
 $ bundle
 ```
 
-6. Requesting a Quote from Bloom Trade
+## API
+
+Requesting a Quote from Bloom Trade
 ```ruby
 params = { base_currency: "BTC", counter_currency: "PHP", quote_type: "buy", amount: 0.50 }
 result = BloomRates::Client.new.get_quote(params)
+```
+
+Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
+from either `["buy", "sell", "mid"]`. Mid is the average value.
+```ruby
+result = BloomRates.convert(
+  base_currency: "BTC", counter_currency: "USD", type: "buy"
+)
 ```
 
 ## Contributing
