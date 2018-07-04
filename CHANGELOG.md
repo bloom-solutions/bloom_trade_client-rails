@@ -8,6 +8,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 - Change `publisher_url` to be `bloom_trade_url`
 - Add `BloomRates::Client` for bloom_trade api consumption
+- Add `BloomRates.convert` to convert between currencies
 
 ## [0.2.0] - 2017-06-25
 ### Changed

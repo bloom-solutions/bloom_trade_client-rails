@@ -25,4 +25,12 @@ module BloomRates
 
     client.start
   end
+
+  def self.convert(base_currency:, counter_currency:, type:)
+    BloomRates::ExchangeRates::Convert.(
+      base_currency: base_currency,
+      counter_currency: counter_currency,
+      type: type
+    )
+  end
 end
