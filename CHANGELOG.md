@@ -7,6 +7,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.5.0] - 2017-07-09
+- Move factories to lib/factories to be used by gem users
+
 ## [0.4.0] - 2017-07-04
 - Return raw response from bloom-trade endpoint
 - Use vcr and webmock for testing BloomRates::Client
