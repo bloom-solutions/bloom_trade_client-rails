@@ -6,6 +6,7 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Fix `httparty` required on test and not on app
 
 ## [0.5.0] - 2017-07-09
 - Move factories to lib/factories to be used by gem users

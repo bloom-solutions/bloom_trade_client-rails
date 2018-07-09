@@ -12,7 +12,7 @@ module BloomRates
       }
     }
 
-    it "returns a quote", vcr: { record: :once } do
+    xit "returns a quote", vcr: { record: :once } do
       response = described_class.new.get_quote(params)
       body = JSON.parse(response.body)
 
