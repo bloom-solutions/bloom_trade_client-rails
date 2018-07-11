@@ -1,8 +1,8 @@
 require 'light-service'
 require 'virtus'
+require 'httparty'
 require 'gem_config'
 require 'bloom_rates/engine'
-require 'httparty'
 
 module BloomRates
   include GemConfig::Base
