@@ -4,15 +4,8 @@ module BloomRates
 
     base_uri BloomRates.configuration.bloom_trade_url
 
-    def get_quote(quote = {})
-      query_string = {
-        quote: {
-          base_currency: quote.fetch(:base_currency),
-          counter_currency: quote.fetch(:counter_currency),
-          quote_type: quote.fetch(:quote_type),
-          amount: quote.fetch(:amount),
-        }
-      }
+    def get_quote(args = {})
+      query_string = build_quote_from(args)
 
       self.class.post(
         "/api/v1/quotes",
@@ -24,11 +17,26 @@ module BloomRates
     private
 
     def auth_header
-      token = BloomRates.configuration.bloom_trade_api_token
+      token = 
+        BloomRates.configuration.bloom_trade_api_token
+
       { 
         "Authorization" => "Bearer #{token}",
         "Content-Type"  => "application/json"
       }
+    end
+    
+    def build_quote_from(args)
+      query_string = Hash.new
+
+      query_string[:quote] = {
+        base_currency: args.fetch(:base_currency),
+        counter_currency: args.fetch(:counter_currency),
+        quote_type: args.fetch(:quote_type),
+        amount: args.fetch(:amount),
+      }
+
+      query_string
     end
 
   end
