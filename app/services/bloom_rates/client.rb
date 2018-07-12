@@ -4,8 +4,15 @@ module BloomRates
 
     base_uri BloomRates.configuration.bloom_trade_url
 
-    def get_quote(args = {})
-      query_string = build_quote_from(args)
+    def get_quote(base_currency:, counter_currency:, quote_type:, amount:)
+      query_string = {
+        quote: {
+          base_currency: base_currency,
+          counter_currency: counter_currency,
+          quote_type: quote_type,
+          amount: amount,
+        }
+      }
 
       self.class.post(
         "/api/v1/quotes",
@@ -26,18 +33,5 @@ module BloomRates
       }
     end
     
-    def build_quote_from(args)
-      query_string = Hash.new
-
-      query_string[:quote] = {
-        base_currency: args.fetch(:base_currency),
-        counter_currency: args.fetch(:counter_currency),
-        quote_type: args.fetch(:quote_type),
-        amount: args.fetch(:amount),
-      }
-
-      query_string
-    end
-
   end
 end
