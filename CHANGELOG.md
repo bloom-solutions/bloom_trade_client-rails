@@ -6,6 +6,7 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Load dependencies when engine is loaded
 
 ## [0.5.1] - 2018-07-09
 - Fix `httparty` required on test and not on app
