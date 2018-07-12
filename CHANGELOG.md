@@ -6,6 +6,8 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.5.3] - 2018-07-12
 - Change client test to use `webmock`
 - Remove `vcr` dependency
 
