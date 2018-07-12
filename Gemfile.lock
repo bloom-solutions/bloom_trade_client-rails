@@ -176,7 +176,6 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    vcr (4.0.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -200,7 +199,6 @@ DEPENDENCIES
   pry
   rspec-rails
   sqlite3
-  vcr
   webmock
 
 BUNDLED WITH
