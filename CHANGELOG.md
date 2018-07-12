@@ -6,6 +6,8 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.5.2] - 2018-07-12
 - Load dependencies when engine is loaded
 
 ## [0.5.1] - 2018-07-09
