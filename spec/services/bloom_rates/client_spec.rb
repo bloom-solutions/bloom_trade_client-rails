@@ -19,6 +19,8 @@ module BloomRates
         "amount"=>"100.0", 
         "price"=>"100000", 
         "total"=>"10000000", 
+        "bx8_fee"=>"100",
+        "memo"=>"some-random-string",
         "expiration_timestamp"=>1531308130
       }
     end
@@ -41,6 +43,8 @@ module BloomRates
       expect(body["amount"]).to eq "100.0"
       expect(body["price"]).to eq "100000"
       expect(body["total"]).to eq "10000000"
+      expect(body["bx8_fee"]).to eq "100"
+      expect(body["memo"]).to eq "some-random-string"
       expect(body["expiration_timestamp"]).to_not be_nil
     end
 
