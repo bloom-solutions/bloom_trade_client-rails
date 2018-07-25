@@ -10,7 +10,8 @@ PATH
   remote: .
   specs:
     bloom_rates-rails (0.7.0)
-      gem_config
+      addressable
+      api_client_base (~> 1.0)
       httparty (= 0.15.6)
       light-service
       message_bus-client
@@ -63,6 +64,10 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
+    api_client_base (1.2.0)
+      activesupport (>= 3.0)
+      gem_config (>= 0.3.1)
+      virtus (>= 1.0)
     arel (9.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -176,6 +181,7 @@ GEM
     thread_safe (0.3.6)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    vcr (4.0.0)
     virtus (1.0.5)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -199,6 +205,7 @@ DEPENDENCIES
   pry
   rspec-rails
   sqlite3
+  vcr
   webmock
 
 BUNDLED WITH

@@ -1,11 +1,13 @@
+require "addressable"
+require 'api_client_base'
 require 'light-service'
 require 'virtus'
 require 'httparty'
-require 'gem_config'
 require 'bloom_rates/engine'
 
 module BloomRates
-  include GemConfig::Base
+
+  include APIClientBase::Base.module
 
   DEFAULT_CHANNEL = '/exchange_rates'.freeze
 

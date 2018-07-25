@@ -57,6 +57,10 @@ result = BloomRates.convert(
 )
 ```
 
+## Development
+
+Copy the config and customize it (especially if you're re-recording cassettes): `cp spec/config.yml{.sample,}`
+
 ## Contributing
 Contribution directions go here.
 

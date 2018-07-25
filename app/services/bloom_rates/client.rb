@@ -2,8 +2,6 @@ module BloomRates
   class Client
     include HTTParty
 
-    base_uri BloomRates.configuration.bloom_trade_url
-
     def get_quote(token, quote = {})
       query_string = {
         quote: {
@@ -14,8 +12,11 @@ module BloomRates
         }
       }
 
+      uri = Addressable::URI.parse(BloomRates.configuration.bloom_trade_url)
+      uri.path = "/api/v1/quotes"
+
       self.class.post(
-        "/api/v1/quotes",
+        uri.to_s,
         body: query_string.to_json,
         headers: header_with_token(token)
       )
@@ -24,11 +25,11 @@ module BloomRates
     private
 
     def header_with_token(token)
-      { 
+      {
         "Authorization" => "Bearer #{token}",
         "Content-Type"  => "application/json"
       }
     end
-    
+
   end
 end
