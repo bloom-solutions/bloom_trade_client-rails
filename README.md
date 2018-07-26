@@ -40,7 +40,10 @@ $ bundle
 Requesting a Quote from Bloom Trade
 ```ruby
 params = { base_currency: "BTC", counter_currency: "PHP", quote_type: "buy", amount: 0.50 }
-result = BloomRates::Client.new.get_quote(params)
+result = BloomRates::Client.new.get_quote(
+  "your-api-token-here",
+  params
+)
 ```
 
 Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
