@@ -33,7 +33,11 @@ module BloomRates
     end
 
     it "returns a quote" do
-      response = described_class.new.get_quote(params)
+      response = described_class.new.get_quote(
+        "some-token", 
+        params
+      )
+
       body = JSON.parse(response.body)
 
       expect(response).to be_success
