@@ -4,6 +4,7 @@ require 'light-service'
 require 'virtus'
 require 'httparty'
 require 'bloom_rates/engine'
+require 'bloom_rates/client'
 
 module BloomRates
 
