@@ -13,7 +13,10 @@ module BloomRates
   DEFAULT_CHANNEL = '/exchange_rates'.freeze
 
   with_configuration do
-    has :bloom_trade_url, classes: String, default: 'https://trade.bloom.solutions'
+    has(:bloom_trade_url, {
+      classes: String,
+      default: 'https://staging.trade.bloom.solutions',
+    })
     has :reserve_currency, classes: String, default: 'PHP'
   end
 
