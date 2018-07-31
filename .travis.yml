@@ -3,4 +3,7 @@ before_install: gem update --system
 cache: bundler
 sudo: false
 rvm:
-  - 2.5.0
+  - 2.5.1
+before_script:
+  - ./bin/rails db:migrate RAILS_ENV=test
+script: bundle exec rspec
