@@ -6,6 +6,8 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- BloomRates::Client accepts an api token
+- Remove `bloom_trade_api_token` from gem config
 
 ## [0.6.0] - 2018-07-31
 - Create MessageBusLastId.create_or_update
