@@ -6,6 +6,8 @@ and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.6.0] - 2018-07-31
 - Create MessageBusLastId.create_or_update
 - Only store 1 record of `MessageBusLastId`
 
