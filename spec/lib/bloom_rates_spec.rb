@@ -2,8 +2,8 @@ require "spec_helper"
 
 module BloomRates
   describe "configuration defaults" do
-    it "has a default bloom_trade_url" do
-      expect(BloomRates.configuration.bloom_trade_url).
+    it "has a default host" do
+      expect(BloomRates.configuration.host).
         to eq "https://staging.trade.bloom.solutions"
     end
 

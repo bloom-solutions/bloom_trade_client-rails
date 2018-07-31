@@ -12,27 +12,23 @@ module BloomRates
       }
     }
 
-    before do
-      BloomRates.configure do |c|
-        c.bloom_trade_url = "https://staging.trade.bloom.solutions"
-      end
-    end
-
     it "returns a quote", vcr: {record: :once} do
-      response = described_class.new.
-        get_quote(CONFIG[:bloom_trade_api_token], params)
-      body = JSON.parse(response.body)
+      client = described_class.new(
+        host: "https://staging.trade.bloom.solutions",
+        token: CONFIG[:bloom_trade_api_token],
+      )
+      response = client.get_quote(params)
 
       expect(response).to be_success
-      expect(body["base_currency"]).to eq "BTC"
-      expect(body["counter_currency"]).to eq "PHP"
-      expect(body["quote_type"]).to eq "sell"
-      expect(body["amount"]).to eq "1.5"
-      expect(body["price"]).to be_present
-      expect(body["total"]).to be_present
-      expect(body["bx8_fee"]).to be_present
-      expect(body["memo"]).to be_present
-      expect(body["expiration_timestamp"]).to_not be_nil
+      expect(response.base_currency).to eq "BTC"
+      expect(response.counter_currency).to eq "PHP"
+      expect(response.quote_type).to eq "sell"
+      expect(response.amount).to eq 1.5
+      expect(response.price).to be_a BigDecimal
+      expect(response.total).to be_a BigDecimal
+      expect(response.bx8_fee).to be_a BigDecimal
+      expect(response.memo).to be_a String
+      expect(response.expiration_timestamp).to be_an Integer
     end
 
   end

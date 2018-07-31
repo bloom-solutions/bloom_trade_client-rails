@@ -2,9 +2,10 @@ require "addressable"
 require 'api_client_base'
 require 'light-service'
 require 'virtus'
-require 'httparty'
 require 'bloom_rates/engine'
 require 'bloom_rates/client'
+require 'bloom_rates/requests/get_quote_request'
+require 'bloom_rates/responses/get_quote_response'
 
 module BloomRates
 
@@ -13,7 +14,7 @@ module BloomRates
   DEFAULT_CHANNEL = '/exchange_rates'.freeze
 
   with_configuration do
-    has(:bloom_trade_url, {
+    has(:host, {
       classes: String,
       default: 'https://staging.trade.bloom.solutions',
     })
@@ -21,7 +22,7 @@ module BloomRates
   end
 
   def self.setup(channel = DEFAULT_CHANNEL)
-    client = MessageBus::Client.new(BloomRates.configuration.bloom_trade_url)
+    client = MessageBus::Client.new(BloomRates.configuration.host)
     current_last_id = BloomRates::MessageBusLastIdSetter.()
 
     client.subscribe(channel, current_last_id) do |payload, last_id|

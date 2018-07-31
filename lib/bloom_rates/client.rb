@@ -1,32 +1,18 @@
 module BloomRates
   class Client
 
-    def get_quote(token, quote = {})
-      query_string = {
-        quote: {
-          base_currency: quote.fetch(:base_currency),
-          counter_currency: quote.fetch(:counter_currency),
-          quote_type: quote.fetch(:quote_type),
-          amount: quote.fetch(:amount),
-        }
-      }
+    include APIClientBase::Client.module(default_opts: :all_opts)
+    attribute :host, String
+    attribute :token, String
 
-      uri = Addressable::URI.parse(BloomRates.configuration.bloom_trade_url)
-      uri.path = "/api/v1/quotes"
-
-      HTTParty.post(
-        uri.to_s,
-        body: query_string.to_json,
-        headers: header_with_token(token)
-      )
-    end
+    api_action :get_quote
 
     private
 
-    def header_with_token(token)
+    def all_opts
       {
-        "Authorization" => "Bearer #{token}",
-        "Content-Type"  => "application/json"
+        host: host,
+        token: token,
       }
     end
 
