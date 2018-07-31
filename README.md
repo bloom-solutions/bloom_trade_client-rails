@@ -1,4 +1,7 @@
 # BloomRates
+
+[![Build Status](https://travis-ci.org/bloom-solutions/bloom_rates-rails.svg?branch=master)](https://travis-ci.org/bloom-solutions/bloom_rates-rails)
+
 Mountable Exchange Rates client for market data coming from Bloom Trade
 
 ## Usage
