@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bloom_rates-rails (0.6.0)
+    bloom_rates-rails (0.7.0)
       gem_config
       httparty (= 0.15.6)
       light-service
@@ -202,4 +202,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.2
+   1.16.3
