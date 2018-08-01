@@ -2,54 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: https://trade.bloom.solutions/api/v1/quotes
-    body:
-      encoding: UTF-8
-      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":1.5}}'
-    headers:
-      Authorization:
-      - Bearer [bloom_trade_api_token]
-      Content-Type:
-      - application/json
-  response:
-    status:
-      code: 401
-      message: Unauthorized
-    headers:
-      Cache-Control:
-      - no-cache
-      Content-Type:
-      - application/json; charset=utf-8
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Request-Id:
-      - 4ed2876d-cc0f-4326-8959-072e5e8d5238
-      X-Runtime:
-      - '0.010238'
-      X-Xss-Protection:
-      - 1; mode=block
-      Date:
-      - Wed, 25 Jul 2018 02:24:48 GMT
-      Content-Length:
-      - '19'
-    body:
-      encoding: UTF-8
-      string: API Token not found
-    http_version: 
-  recorded_at: Wed, 25 Jul 2018 02:24:48 GMT
-- request:
-    method: post
     uri: https://staging.trade.bloom.solutions/api/v1/quotes
     body:
       encoding: UTF-8
-      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":1.5}}'
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5"}}'
     headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
       Authorization:
       - Bearer [bloom_trade_api_token]
       Content-Type:
       - application/json
+      Expect:
+      - ''
   response:
     status:
       code: 200
@@ -60,24 +25,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"ec1a4d698d1665ff4a937cccca7d0aa8"
+      - W/"6b5c789eed835a50b67a13b028fff18c"
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 513b6ab8-88e7-4bb2-9eb0-d519e9bbb845
+      - 4535c74e-3c4b-4ccc-b72e-60a004504efb
       X-Runtime:
-      - '0.140096'
+      - '0.090593'
       X-Xss-Protection:
       - 1; mode=block
       Date:
-      - Tue, 31 Jul 2018 13:04:58 GMT
+      - Wed, 01 Aug 2018 03:28:19 GMT
       Content-Length:
       - '321'
     body:
       encoding: UTF-8
-      string: '{"id":94,"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","memo":"ZMUmhWlHCPXKZgrxapQrctCvlYym","amount":"1.5","bx8_fee":"100.0","price":"331293.256477858014","total":"496939.884716787021","expiration_timestamp":1533042598,"created_at":"2018-07-31T13:04:58.500Z","updated_at":"2018-07-31T13:04:58.500Z"}'
+      string: '{"id":104,"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","memo":"YECBcmYkCUhHjRFDdTrujPUqqUeN","amount":"1.5","bx8_fee":"100.0","price":"331366.77845305995","total":"497050.167679589925","expiration_timestamp":1533094399,"created_at":"2018-08-01T03:28:19.288Z","updated_at":"2018-08-01T03:28:19.288Z"}'
     http_version: 
-  recorded_at: Tue, 31 Jul 2018 13:04:58 GMT
+  recorded_at: Wed, 01 Aug 2018 03:28:19 GMT
 recorded_with: VCR 4.0.0
