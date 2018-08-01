@@ -27,6 +27,10 @@ mount BloomRates::Engine => "/bloom_rates"
 
 4. Add an initializer `config/initializers/bloom_rates.rb`
 ```ruby
+BloomRates.configure do |c|
+  c.host = "https://staging.trade.bloom.solutions"
+end
+
 # Creates a subscription to the bloom trade server. Whenever exchange rates
 # are updated, your local database will get the latest exchange rates.
 
@@ -42,11 +46,16 @@ $ bundle
 
 Requesting a Quote from Bloom Trade
 ```ruby
-params = { base_currency: "BTC", counter_currency: "PHP", quote_type: "buy", amount: 0.50 }
-result = BloomRates::Client.new.get_quote(
-  "your-api-token-here",
-  params
+client = BloomRates::Client.new(token: "your-api-token-here")
+response = client.get_quote(
+  base_currency: "BTC",
+  counter_currency: "PHP",
+  quote_type: "buy",
+  amount: 0.50,
 )
+
+response.price
+response.bx8_fee
 ```
 
 Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
@@ -56,6 +65,12 @@ result = BloomRates.convert(
   base_currency: "BTC", counter_currency: "USD", type: "buy"
 )
 ```
+
+See `spec/lib/bloom_rates/client_spec.rb` to see more examples of calls that can be made with BloomTrade.
+
+## Development
+
+Copy the config and customize it (especially if you're re-recording cassettes): `cp spec/config.yml{.sample,}`
 
 ## Contributing
 Contribution directions go here.

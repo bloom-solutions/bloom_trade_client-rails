@@ -23,16 +23,18 @@ Gem::Specification.new do |s|
       "public gem pushes."
   end
 
-  s.add_dependency "gem_config"
-  s.add_dependency "httparty", "0.15.6"
+  s.add_dependency "api_client_base", "~> 1.0"
+  s.add_dependency "typhoeus"
   s.add_dependency "light-service"
   s.add_dependency "message_bus-client"
   s.add_dependency "rails", "~> 5.2.0"
   s.add_dependency "virtus"
+  s.add_dependency "addressable"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "pry"
   s.add_development_dependency "factory_bot_rails"
+  s.add_development_dependency "vcr"
   s.add_development_dependency "webmock"
 end
