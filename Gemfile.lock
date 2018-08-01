@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bloom_rates-rails (0.7.0)
+    bloom_rates-rails (0.8.0)
       addressable
       api_client_base (~> 1.0)
       light-service
