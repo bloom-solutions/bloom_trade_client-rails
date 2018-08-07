@@ -1,26 +1,22 @@
 module BloomRates
   module ExchangeRates
     class Sync
-      def self.call(payload)
-        parsed_payload = JSON.parse(payload)
 
-        parsed_payload.map do |data|
+      def self.call(data, _)
+        data.each do |d|
           exchange_rate = BloomRates::ExchangeRate.where(
-            base_currency: data['base_currency'],
-            counter_currency: data['counter_currency']
+            base_currency: d['base_currency'],
+            counter_currency: d['counter_currency']
           ).first_or_initialize
 
-          sync(exchange_rate, data)
+          exchange_rate.update_attributes!(
+            buy: d['buy'],
+            sell: d['sell'],
+            mid: d['mid'],
+          )
         end
       end
 
-      def self.sync(exchange_rate, data)
-        exchange_rate.update_attributes(
-          buy: data['buy'],
-          sell: data['sell'],
-          mid: data['mid']
-        )
-      end
     end
   end
 end

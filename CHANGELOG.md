@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+- Change `BloomRates::ExchangeRates::Sync.call` method
+  - Make method accept 2 arguments
+  - Parse incoming json payload inside the method
+- Use `message_bus_client_worker` instead of `message_bus-client`
+
 ## [0.8.1] - 2018-08-01
 ### Fixed
 - Fix error when sending quote request to bloom_trade

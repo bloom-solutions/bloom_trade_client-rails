@@ -29,11 +29,11 @@ module BloomRates
             sell: "52",
             timestamp: Time.current.to_i,
           },
-        ].to_json
+        ].map(&:stringify_keys)
       end
 
       it "receives a payload and saves or updates the Exchange Rate" do
-        described_class.(exchange_rates_payload)
+        described_class.(exchange_rates_payload, nil)
 
         expect_created_rates = BloomRates::ExchangeRate.all
         expect(expect_created_rates.count).to eq 3
@@ -81,7 +81,7 @@ module BloomRates
         end
 
         it "updates the old rate" do
-          described_class.(exchange_rates_payload)
+          described_class.(exchange_rates_payload, nil)
 
           expect_created_rates = BloomRates::ExchangeRate.all
           expect(expect_created_rates.count).to eq 3
@@ -98,13 +98,6 @@ module BloomRates
         end
       end
 
-      context "the payload wasn't parsable" do
-        it "expect a raised JSON::ParserError" do
-          expect { described_class.("[asdf::{}]") }.to raise_error(
-            JSON::ParserError,
-          )
-        end
-      end
     end
   end
 end

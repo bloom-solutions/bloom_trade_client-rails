@@ -8,9 +8,10 @@ Mountable Exchange Rates client for market data coming from Bloom Trade
 
 ### Installation
 
+This uses [Sidekiq](https://github.com/mperham/sidekiq) and [sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron) to fetch messages from the rates server.
+
 1. Add this line to your application's Gemfile:
 ```ruby
-gem 'message_bus-client', git: 'https://github.com/bloom-solutions/message_bus-client', ref: 'bloom_changes'
 gem 'bloom_rates-rails'
 ```
 
@@ -31,16 +32,18 @@ BloomRates.configure do |c|
   c.host = "https://staging.trade.bloom.solutions"
 end
 
-# Creates a subscription to the bloom trade server. Whenever exchange rates
-# are updated, your local database will get the latest exchange rates.
-
 BloomRates.setup
 ```
 
-5. Update gems
-```bash
-$ bundle
+5. Add the following to your sidekiq-cron schedule (unless you're already doing this for something else in your app):
+
+```yaml
+message_bus_client_worker:
+  cron: "*/30 * * * * *"
+  class: "MessageBusClientWorker::EnqueuingWorker"
 ```
+
+If you're new to sidekiq-cron, see the [docs](https://github.com/ondrejbartas/sidekiq-cron).
 
 ## API
 

@@ -13,17 +13,15 @@ module BloomRates
   end
 
   describe ".setup" do
-    let(:client) { double(MessageBus::Client) }
-
-    it "calls MessageBus.subscribe" do
-      expect(MessageBus::Client).to receive(:new).with(
-        "https://staging.trade.bloom.solutions"
-      ).and_return(client)
-
-      expect(client).to receive(:subscribe)
-      expect(client).to receive(:start)
-
+    it "sets up MessageBusClientWorker" do
+      BloomRates::MessageBusLastId.create_or_update(last_id: 3)
       BloomRates.setup
+      host = "https://staging.trade.bloom.solutions"
+      subscriptions = MessageBusClientWorker.configuration.subscriptions[host]
+      expect(subscriptions[BloomRates::DEFAULT_CHANNEL]).to eq({
+        processor: BloomRates::ExchangeRates::Sync.to_s,
+        message_id: 3,
+      })
     end
   end
 
