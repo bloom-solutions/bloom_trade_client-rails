@@ -1,6 +1,7 @@
 require "addressable"
 require 'api_client_base'
 require 'light-service'
+require "message_bus_client_worker"
 require 'virtus'
 require 'bloom_rates/engine'
 require 'bloom_rates/client'
@@ -22,15 +23,21 @@ module BloomRates
   end
 
   def self.setup(channel = DEFAULT_CHANNEL)
-    client = MessageBus::Client.new(BloomRates.configuration.host)
     current_last_id = BloomRates::MessageBusLastIdSetter.()
 
-    client.subscribe(channel, current_last_id) do |payload, last_id|
-      BloomRates::ExchangeRates::Sync.(payload)
-      BloomRates::MessageBusLastId.create_or_update(last_id: last_id)
-    end
+    host = BloomRates.configuration.host
 
-    client.start
+    # Do not completely override MessageBusClientWorker config since this might
+    # be used by the host application for other items. It is safe to assume,
+    # however, that if the BloomTrade is listened to it's only this gem
+    # that's doing so
+    MessageBusClientWorker.configuration.subscriptions ||= {}
+    MessageBusClientWorker.configuration.subscriptions[host] = {
+      channel => {
+        processor: BloomRates::ExchangeRates::Sync.to_s,
+        message_id: current_last_id,
+      }
+    }
   end
 
   def self.convert(base_currency:, counter_currency:, type:)
