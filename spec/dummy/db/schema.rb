@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_25_022858) do
+ActiveRecord::Schema.define(version: 2018_08_08_063218) do
 
   create_table "bloom_rates_exchange_rates", force: :cascade do |t|
     t.string "base_currency"
@@ -18,12 +18,6 @@ ActiveRecord::Schema.define(version: 2018_06_25_022858) do
     t.decimal "buy"
     t.decimal "sell"
     t.decimal "mid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "bloom_rates_message_bus_last_ids", force: :cascade do |t|
-    t.integer "last_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

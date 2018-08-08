@@ -22,9 +22,11 @@ module BloomRates
     has :reserve_currency, classes: String, default: 'PHP'
   end
 
-  def self.setup(channel = DEFAULT_CHANNEL)
-    current_last_id = BloomRates::MessageBusLastIdSetter.()
+  after_configuration_change do
+    configure_message_bus_client_worker
+  end
 
+  def self.configure_message_bus_client_worker
     host = BloomRates.configuration.host
 
     # Do not completely override MessageBusClientWorker config since this might
@@ -33,9 +35,9 @@ module BloomRates
     # that's doing so
     MessageBusClientWorker.configuration.subscriptions ||= {}
     MessageBusClientWorker.configuration.subscriptions[host] = {
-      channel => {
+      DEFAULT_CHANNEL => {
         processor: BloomRates::ExchangeRates::Sync.to_s,
-        message_id: current_last_id,
+        message_id: 0,
       }
     }
   end
