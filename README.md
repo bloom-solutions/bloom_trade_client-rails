@@ -31,8 +31,6 @@ mount BloomRates::Engine => "/bloom_rates"
 BloomRates.configure do |c|
   c.host = "https://staging.trade.bloom.solutions"
 end
-
-BloomRates.setup
 ```
 
 5. Add the following to your sidekiq-cron schedule (unless you're already doing this for something else in your app):
