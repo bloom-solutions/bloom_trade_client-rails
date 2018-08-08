@@ -3,18 +3,16 @@ module BloomRates
     class Sync
 
       def self.call(data, _)
-        data.each do |d|
-          exchange_rate = BloomRates::ExchangeRate.where(
-            base_currency: d['base_currency'],
-            counter_currency: d['counter_currency']
-          ).first_or_initialize
+        exchange_rate = BloomRates::ExchangeRate.where(
+          base_currency: data['base_currency'],
+          counter_currency: data['counter_currency']
+        ).first_or_initialize
 
-          exchange_rate.update_attributes!(
-            buy: d['buy'],
-            sell: d['sell'],
-            mid: d['mid'],
-          )
-        end
+        exchange_rate.update_attributes!(
+          buy: data['buy'],
+          sell: data['sell'],
+          mid: data['mid'],
+        )
       end
 
     end

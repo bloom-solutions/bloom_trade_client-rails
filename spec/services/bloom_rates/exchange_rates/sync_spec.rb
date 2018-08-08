@@ -3,37 +3,41 @@ require "spec_helper"
 module BloomRates
   module ExchangeRates
     describe Sync do
-      let(:exchange_rates_payload) do
-        [
-          {
-            base_currency: "BTC",
-            counter_currency: "USD",
-            buy: "7900",
-            mid: "8000",
-            sell: "8100",
-            timestamp: Time.current.to_i,
-          },
-          {
-            base_currency: "AUD",
-            counter_currency: "USD",
-            buy: "0.79",
-            mid: "0.79",
-            sell: "0.79",
-            timestamp: Time.current.to_i,
-          },
-          {
-            base_currency: "USD",
-            counter_currency: "PHP",
-            buy: "52",
-            mid: "52",
-            sell: "52",
-            timestamp: Time.current.to_i,
-          },
-        ].map(&:stringify_keys)
+      let(:data_1) do
+        {
+          "base_currency" => "BTC",
+          "counter_currency" => "USD",
+          "buy" => "7900",
+          "mid" => "8000",
+          "sell" => "8100",
+          "timestamp" => Time.current.to_i,
+        }
+      end
+      let(:data_2) do
+        {
+          "base_currency" => "AUD",
+          "counter_currency" => "USD",
+          "buy" => "0.79",
+          "mid" => "0.79",
+          "sell" => "0.79",
+          "timestamp" => Time.current.to_i,
+        }
+      end
+      let(:data_3) do
+        {
+          "base_currency" => "USD",
+          "counter_currency" => "PHP",
+          "buy" => "52",
+          "mid" => "52",
+          "sell" => "52",
+          "timestamp" => Time.current.to_i,
+        }
       end
 
       it "receives a payload and saves or updates the Exchange Rate" do
-        described_class.(exchange_rates_payload, nil)
+        [data_1, data_2, data_3].each do |data|
+          described_class.(data, nil)
+        end
 
         expect_created_rates = BloomRates::ExchangeRate.all
         expect(expect_created_rates.count).to eq 3
@@ -81,7 +85,9 @@ module BloomRates
         end
 
         it "updates the old rate" do
-          described_class.(exchange_rates_payload, nil)
+          [data_1, data_2, data_3].each do |data|
+            described_class.(data, nil)
+          end
 
           expect_created_rates = BloomRates::ExchangeRate.all
           expect(expect_created_rates.count).to eq 3
