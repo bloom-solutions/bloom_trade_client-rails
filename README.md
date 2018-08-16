@@ -1,6 +1,6 @@
-# BloomRates
+# BloomTradeClient
 
-[![Build Status](https://travis-ci.org/bloom-solutions/bloom_rates-rails.svg?branch=master)](https://travis-ci.org/bloom-solutions/bloom_rates-rails)
+[![Build Status](https://travis-ci.org/bloom-solutions/bloom_trade_client-rails.svg?branch=master)](https://travis-ci.org/bloom-solutions/bloom_trade_client-rails)
 
 Mountable Exchange Rates client for market data coming from Bloom Trade
 
@@ -12,23 +12,23 @@ This uses [Sidekiq](https://github.com/mperham/sidekiq) and [sidekiq-cron](https
 
 1. Add this line to your application's Gemfile:
 ```ruby
-gem 'bloom_rates-rails'
+gem 'bloom_trade_client-rails'
 ```
 
 2. Copy needed migrations
 ```bash
-rails bloom_rates:install:migrations
+rails bloom_trade_client:install:migrations
 ```
 
-3. Enable the BloomRates engine by mounting in your routes
+3. Enable the BloomTradeClient engine by mounting in your routes
 In your `config/routes.rb`
 ```ruby
-mount BloomRates::Engine => "/bloom_rates"
+mount BloomTradeClient::Engine => "/bloom_trade_client"
 ```
 
-4. Add an initializer `config/initializers/bloom_rates.rb`
+4. Add an initializer `config/initializers/bloom_trade_client.rb`
 ```ruby
-BloomRates.configure do |c|
+BloomTradeClient.configure do |c|
   c.host = "https://staging.trade.bloom.solutions"
 end
 ```
@@ -47,7 +47,7 @@ If you're new to sidekiq-cron, see the [docs](https://github.com/ondrejbartas/si
 
 Requesting a Quote from Bloom Trade
 ```ruby
-client = BloomRates::Client.new(token: "your-api-token-here")
+client = BloomTradeClient::Client.new(token: "your-api-token-here")
 response = client.get_quote(
   base_currency: "BTC",
   counter_currency: "PHP",
@@ -62,12 +62,12 @@ response.bx8_fee
 Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
 from either `["buy", "sell", "mid"]`. Mid is the average value.
 ```ruby
-result = BloomRates.convert(
+result = BloomTradeClient.convert(
   base_currency: "BTC", counter_currency: "USD", type: "buy"
 )
 ```
 
-See `spec/lib/bloom_rates/client_spec.rb` to see more examples of calls that can be made with BloomTrade.
+See `spec/lib/bloom_trade_client/client_spec.rb` to see more examples of calls that can be made with BloomTrade.
 
 ## Development
 
