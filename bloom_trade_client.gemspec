@@ -1,17 +1,20 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "bloom_rates/version"
+require "bloom_trade_client/version"
+
+gem_description = "Mountable Rails Engine for building apps " \
+  "on top of the BloomX anchor"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "bloom_rates-rails"
+  s.name        = "bloom_trade_client-rails"
   s.version     = BloomRates::VERSION
   s.authors     = ["Ace Subido"]
   s.email       = ["ace.subido@gmail.com"]
-  s.homepage    = "https://github.com/bloom-solutions/bloom_rates-rails"
-  s.summary     = "Mountable Exchange Rates client for Bloom applications"
-  s.description = "Mountable Exchange Rates client for Bloom applications"
+  s.homepage    = "https://github.com/bloom-solutions/bloom_trade_client-rails"
+  s.summary     = gem_description
+  s.description = gem_description
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
