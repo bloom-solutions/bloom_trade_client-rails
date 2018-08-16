@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module BloomRates
+module BloomTradeClient
   RSpec.describe Client do
 
     let(:params) {

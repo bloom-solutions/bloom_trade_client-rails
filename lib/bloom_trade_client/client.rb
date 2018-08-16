@@ -1,4 +1,4 @@
-module BloomRates
+module BloomTradeClient
   class Client
 
     include APIClientBase::Client.module(default_opts: :all_opts)

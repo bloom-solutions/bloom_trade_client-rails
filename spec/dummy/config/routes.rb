@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount BloomRates::Engine => "/bloom_rates"
+  mount BloomTradeClient::Engine => "/bloom_trade_client"
 end

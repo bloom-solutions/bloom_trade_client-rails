@@ -1,9 +1,9 @@
-module BloomRates
+module BloomTradeClient
   module ExchangeRates
     class Sync
 
       def self.call(data, _)
-        exchange_rate = BloomRates::ExchangeRate.where(
+        exchange_rate = BloomTradeClient::ExchangeRate.where(
           base_currency: data['base_currency'],
           counter_currency: data['counter_currency']
         ).first_or_initialize

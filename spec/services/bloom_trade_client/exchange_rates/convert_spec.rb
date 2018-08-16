@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module BloomRates
+module BloomTradeClient
   module ExchangeRates
     describe Convert do
       describe ".call" do
@@ -17,7 +17,7 @@ module BloomRates
 
           context "direct_rate exists" do
             it "calculates using the direct rate" do
-              create(:bloom_rates_exchange_rate, {
+              create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "USD",
                 mid: 50.0,
@@ -33,7 +33,7 @@ module BloomRates
 
           context "reversed_rate exists" do
             it "calculates by dividing with 1" do
-              create(:bloom_rates_exchange_rate, {
+              create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "USD",
                 mid: 50.0,
@@ -50,12 +50,12 @@ module BloomRates
 
           context "currency_pair don't exist, use reserve_currency" do
             it "calculates by using the reserve currency" do
-              create(:bloom_rates_exchange_rate, {
+              create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "BTC",
                 mid: 0.00001,
               })
-              create(:bloom_rates_exchange_rate, {
+              create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "KRW",
                 mid: 20,
@@ -72,12 +72,12 @@ module BloomRates
 
           context "currency pair don't exist, unable to use reserve_currency" do
             it "returns 0.0" do
-              create(:bloom_rates_exchange_rate, {
+              create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "BTC",
                 mid: 0.00001,
               })
-              create(:bloom_rates_exchange_rate, {
+              create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "KRW",
                 mid: 20,

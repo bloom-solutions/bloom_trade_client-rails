@@ -9,7 +9,7 @@ gem_description = "Mountable Rails Engine for building apps " \
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "bloom_trade_client-rails"
-  s.version     = BloomRates::VERSION
+  s.version     = BloomTradeClient::VERSION
   s.authors     = ["Ace Subido"]
   s.email       = ["ace.subido@gmail.com"]
   s.homepage    = "https://github.com/bloom-solutions/bloom_trade_client-rails"

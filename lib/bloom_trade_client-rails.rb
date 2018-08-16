@@ -1,2 +1,2 @@
-require "bloom_rates"
+require "bloom_trade_client"
 

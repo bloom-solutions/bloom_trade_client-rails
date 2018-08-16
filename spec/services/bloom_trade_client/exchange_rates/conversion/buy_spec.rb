@@ -1,13 +1,13 @@
 require 'spec_helper'
 
-module BloomRates
+module BloomTradeClient
   module ExchangeRates
     module Conversion
       RSpec.describe Buy do
         context 'rates exist' do
           let!(:existing_rate) do
             create(
-              :bloom_rates_exchange_rate,
+              :bloom_trade_client_exchange_rate,
               base_currency: 'USD',
               counter_currency: 'PHP',
               buy: 30, mid: 40, sell: 50

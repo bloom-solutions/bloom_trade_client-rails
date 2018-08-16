@@ -1,2 +1,2 @@
-BloomRates::Engine.routes.draw do
+BloomTradeClient::Engine.routes.draw do
 end

@@ -1,6 +1,6 @@
-module BloomRates
+module BloomTradeClient
   class Engine < ::Rails::Engine
-    isolate_namespace BloomRates
+    isolate_namespace BloomTradeClient
 
     config.to_prepare do
       Engine.routes.default_url_options =

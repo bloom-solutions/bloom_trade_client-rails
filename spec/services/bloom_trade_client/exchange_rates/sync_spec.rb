@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module BloomRates
+module BloomTradeClient
   module ExchangeRates
     describe Sync do
       let(:data_1) do
@@ -39,10 +39,10 @@ module BloomRates
           described_class.(data, nil)
         end
 
-        expect_created_rates = BloomRates::ExchangeRate.all
+        expect_created_rates = BloomTradeClient::ExchangeRate.all
         expect(expect_created_rates.count).to eq 3
 
-        btcusd = BloomRates::ExchangeRate.find_by(
+        btcusd = BloomTradeClient::ExchangeRate.find_by(
           base_currency: "BTC",
           counter_currency: "USD",
         )
@@ -52,7 +52,7 @@ module BloomRates
         expect(btcusd.sell).to eq 8100
         expect(btcusd.mid).to eq 8000
 
-        audusd = BloomRates::ExchangeRate.find_by(
+        audusd = BloomTradeClient::ExchangeRate.find_by(
           base_currency: "AUD",
           counter_currency: "USD",
         )
@@ -62,7 +62,7 @@ module BloomRates
         expect(audusd.sell).to eq 0.79
         expect(audusd.mid).to eq 0.79
 
-        usdphp = BloomRates::ExchangeRate.find_by(
+        usdphp = BloomTradeClient::ExchangeRate.find_by(
           base_currency: "USD",
           counter_currency: "PHP",
         )
@@ -75,7 +75,7 @@ module BloomRates
 
       context "the exchange rates currently exist" do
         before do
-          create(:bloom_rates_exchange_rate, {
+          create(:bloom_trade_client_exchange_rate, {
             base_currency: "BTC",
             counter_currency: "USD",
             buy: 7800,
@@ -89,10 +89,10 @@ module BloomRates
             described_class.(data, nil)
           end
 
-          expect_created_rates = BloomRates::ExchangeRate.all
+          expect_created_rates = BloomTradeClient::ExchangeRate.all
           expect(expect_created_rates.count).to eq 3
 
-          btcusd = BloomRates::ExchangeRate.find_by(
+          btcusd = BloomTradeClient::ExchangeRate.find_by(
             base_currency: "BTC",
             counter_currency: "USD",
           )

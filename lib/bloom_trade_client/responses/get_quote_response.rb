@@ -1,4 +1,4 @@
-module BloomRates
+module BloomTradeClient
   class GetQuoteResponse
 
     PARAMS = %i[

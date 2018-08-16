@@ -3,12 +3,12 @@ require 'api_client_base'
 require 'light-service'
 require "message_bus_client_worker"
 require 'virtus'
-require 'bloom_rates/engine'
-require 'bloom_rates/client'
-require 'bloom_rates/requests/get_quote_request'
-require 'bloom_rates/responses/get_quote_response'
+require 'bloom_trade_client/engine'
+require 'bloom_trade_client/client'
+require 'bloom_trade_client/requests/get_quote_request'
+require 'bloom_trade_client/responses/get_quote_response'
 
-module BloomRates
+module BloomTradeClient
 
   include APIClientBase::Base.module
 
@@ -27,7 +27,7 @@ module BloomRates
   end
 
   def self.configure_message_bus_client_worker
-    host = BloomRates.configuration.host
+    host = BloomTradeClient.configuration.host
 
     # Do not completely override MessageBusClientWorker config since this might
     # be used by the host application for other items. It is safe to assume,
@@ -36,14 +36,14 @@ module BloomRates
     MessageBusClientWorker.configuration.subscriptions ||= {}
     MessageBusClientWorker.configuration.subscriptions[host] = {
       DEFAULT_CHANNEL => {
-        processor: BloomRates::ExchangeRates::Sync.to_s,
+        processor: BloomTradeClient::ExchangeRates::Sync.to_s,
         message_id: 0,
       }
     }
   end
 
   def self.convert(base_currency:, counter_currency:, type:)
-    BloomRates::ExchangeRates::Convert.(
+    BloomTradeClient::ExchangeRates::Convert.(
       base_currency: base_currency,
       counter_currency: counter_currency,
       type: type

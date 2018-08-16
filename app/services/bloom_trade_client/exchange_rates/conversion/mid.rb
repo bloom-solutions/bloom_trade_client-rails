@@ -1,4 +1,4 @@
-module BloomRates
+module BloomTradeClient
   module ExchangeRates
     module Conversion
       class Mid

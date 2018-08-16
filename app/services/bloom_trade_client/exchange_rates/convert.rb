@@ -1,11 +1,11 @@
-module BloomRates
+module BloomTradeClient
   module ExchangeRates
     class Convert
 
       def self.call(
         base_currency:,
         counter_currency:,
-        reserve_currency: BloomRates.configuration.reserve_currency,
+        reserve_currency: BloomTradeClient.configuration.reserve_currency,
         type: "mid"
       )
         rate = direct_rate(type, base_currency, counter_currency)
@@ -28,7 +28,7 @@ module BloomRates
         return nil unless %w(buy sell mid).include? type
 
         [
-          "BloomRates",
+          "BloomTradeClient",
           "ExchangeRates",
           "Conversion",
           type.capitalize

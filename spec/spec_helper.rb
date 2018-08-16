@@ -8,7 +8,7 @@ require "pry"
 require "rspec/rails"
 require "webmock/rspec"
 
-Dir[BloomRates::Engine.root.join('spec/support/**/*.rb')].each do |f|
+Dir[BloomTradeClient::Engine.root.join('spec/support/**/*.rb')].each do |f|
   require f
 end
 

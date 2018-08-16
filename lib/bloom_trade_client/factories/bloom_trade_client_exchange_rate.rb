@@ -1,3 +1,3 @@
 FactoryBot.define do
-  factory :bloom_rates_exchange_rate, class: "BloomRates::ExchangeRate"
+  factory :bloom_trade_client_exchange_rate, class: "BloomTradeClient::ExchangeRate"
 end

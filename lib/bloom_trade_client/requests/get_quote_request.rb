@@ -1,4 +1,4 @@
-module BloomRates
+module BloomTradeClient
   class GetQuoteRequest
 
     include APIClientBase::Request.module(action: :post)
