@@ -1,0 +1,48 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging.trade.bloom.solutions/api/v1/quotes
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"421a6361106dccbe5d57733f98cd1863"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 013c8021-2223-429b-93e1-65d4b453f236
+      X-Runtime:
+      - '0.102792'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 16 Aug 2018 04:08:37 GMT
+      Content-Length:
+      - '230'
+    body:
+      encoding: UTF-8
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","bx8_fee":"100.0","price":"338038.2136271063","total":"507057.32044065945","expiration_timestamp":1534392817,"memo":"OUQBvSxrMtAVDNxxQihISkstiIRe","quote_type":"sell"}'
+    http_version: 
+  recorded_at: Thu, 16 Aug 2018 04:08:37 GMT
+recorded_with: VCR 4.0.0
