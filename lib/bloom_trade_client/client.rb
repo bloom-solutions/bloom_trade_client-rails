@@ -6,6 +6,7 @@ module BloomTradeClient
     attribute :token, String
 
     api_action :get_quote
+    api_action :update_quote
 
     private
 

@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://staging.trade.bloom.solutions/api/v1/quotes
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"4b587ae935a85697244b3ee984d74ab1"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - f2060391-7458-451e-bbb4-de7572ee6c79
+      X-Runtime:
+      - '0.040679'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Mon, 20 Aug 2018 04:22:33 GMT
+      Content-Length:
+      - '233'
+    body:
+      encoding: UTF-8
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","bx8_fee":"100.0","price":"336098.560518990192","total":"504147.840778485288","expiration_timestamp":1534739253,"memo":"TCYtJyAkQZuAOYdRtdtaYSySldYn","quote_type":"sell"}'
+    http_version: 
+  recorded_at: Mon, 20 Aug 2018 04:22:33 GMT
+- request:
+    method: put
+    uri: https://staging.trade.bloom.solutions/api/v1/quotes/TCYtJyAkQZuAOYdRtdtaYSySldYn
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"destination_memo":"V1234","destination_address":"G-1234"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Request-Id:
+      - 1bc4cf59-ed67-496a-adff-9d13b61f99a8
+      X-Runtime:
+      - '0.017047'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Mon, 20 Aug 2018 04:22:33 GMT
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Mon, 20 Aug 2018 04:22:33 GMT
+recorded_with: VCR 4.0.0
