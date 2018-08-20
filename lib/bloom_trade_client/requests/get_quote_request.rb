@@ -1,8 +1,6 @@
 module BloomTradeClient
-  class GetQuoteRequest
+  class GetQuoteRequest < BaseAuthenticatedRequest
 
-    include APIClientBase::Request.module(action: :post)
-    attribute :token, String
     attribute :base_currency, String
     attribute :counter_currency, String
     attribute :quote_type, String
@@ -10,6 +8,10 @@ module BloomTradeClient
 
     def path
       "/api/v1/quotes"
+    end
+
+    def default_action
+      :post
     end
 
     def body
@@ -21,13 +23,6 @@ module BloomTradeClient
           amount: amount,
         }
       }.to_json
-    end
-
-    def headers
-      {
-        "Authorization" => "Bearer #{token}",
-        "Content-Type" => "application/json",
-      }
     end
 
   end
