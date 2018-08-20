@@ -27,15 +27,21 @@ module BloomTradeClient
       def self.direct_rate(type, base_currency, counter_currency)
         return nil unless %w(buy sell mid).include? type
 
-        [
-          "BloomTradeClient",
-          "ExchangeRates",
-          "Conversion",
-          type.capitalize
-        ].join("::").constantize.(
-          base_currency,
-          counter_currency,
+        return 1.0 if base_currency == counter_currency
+
+        exchange_rate = ExchangeRate.find_by(
+          base_currency: base_currency,
+          counter_currency: counter_currency,
         )
+
+        return exchange_rate.send(type.to_sym) if exchange_rate
+
+        reversed_rate = ExchangeRate.find_by(
+          base_currency: counter_currency,
+          counter_currency: base_currency,
+        )
+
+        return 1.0 / reversed_rate.send(type.to_sym) if reversed_rate
       end
     end
   end

@@ -1,5 +1,5 @@
 module BloomTradeClient
-  class GetQuoteResponse
+  class GetQuoteResponse < BaseResponse
 
     PARAMS = %i[
       base_currency
@@ -13,8 +13,6 @@ module BloomTradeClient
       expiration_timestamp
     ]
 
-    include APIClientBase::Response.module
-    attribute :body, Object, lazy: true, default: :default_body
     attribute :base_currency, String, lazy: true, default: :default_base_currency
     attribute(:counter_currency, String, {
       lazy: true,
@@ -33,25 +31,10 @@ module BloomTradeClient
 
     private
 
-    def path
-      "/api/v1/quotes"
-    end
-
-    def headers
-      {
-        "Authorization" => "Bearer #{token}",
-        "Content-Type" => "application/json",
-      }
-    end
-
     PARAMS.each do |method_name|
       define_method :"default_#{method_name}" do
         body[method_name]
       end
-    end
-
-    def default_body
-      JSON.parse(raw_response.body).with_indifferent_access
     end
 
   end

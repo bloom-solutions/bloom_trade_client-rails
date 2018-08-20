@@ -25,24 +25,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"421a6361106dccbe5d57733f98cd1863"
+      - W/"5c6ee71c949a79ad0f92b65acc9ea736"
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 013c8021-2223-429b-93e1-65d4b453f236
+      - 2c033ac9-ca1b-4cd9-a74b-e833f08d58b6
       X-Runtime:
-      - '0.102792'
+      - '0.085454'
       X-Xss-Protection:
       - 1; mode=block
       Date:
-      - Thu, 16 Aug 2018 04:08:37 GMT
+      - Mon, 20 Aug 2018 05:43:44 GMT
       Content-Length:
-      - '230'
+      - '231'
     body:
       encoding: UTF-8
-      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","bx8_fee":"100.0","price":"338038.2136271063","total":"507057.32044065945","expiration_timestamp":1534392817,"memo":"OUQBvSxrMtAVDNxxQihISkstiIRe","quote_type":"sell"}'
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","bx8_fee":"100.0","price":"336136.46385747604","total":"504204.69578621406","expiration_timestamp":1534744124,"memo":"ngAGgdUDuGSGghrVcRorohrxspQo","quote_type":"sell"}'
     http_version: 
-  recorded_at: Thu, 16 Aug 2018 04:08:37 GMT
+  recorded_at: Mon, 20 Aug 2018 05:43:44 GMT
 recorded_with: VCR 4.0.0
