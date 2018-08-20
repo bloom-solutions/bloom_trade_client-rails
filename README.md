@@ -59,6 +59,19 @@ response.price
 response.bx8_fee
 ```
 
+Updating a Quote from Bloom Trade
+
+```ruby
+response = client.update_quote(
+  memo: "#{from_client.get_quote_quote}",
+  destination_memo: "#{some_stellar_memo_bloom_trade_will_send_to}",
+  destination_address: "#{some_stellar_address_bloom_trade_will_send_to}",
+)
+```
+
+This so that Bloom Trade can issue the corresponding base/counter currency (based on quote type)
+to fulfill the quote.
+
 Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
 from either `["buy", "sell", "mid"]`. Mid is the average value.
 ```ruby
