@@ -27,9 +27,11 @@ mount BloomTradeClient::Engine => "/bloom_trade_client"
 ```
 
 4. Add an initializer `config/initializers/bloom_trade_client.rb`
+
 ```ruby
 BloomTradeClient.configure do |c|
   c.host = "https://staging.trade.bloom.solutions"
+  c.reserve_currency = "PHP" # What the conversion service will use
 end
 ```
 
@@ -46,17 +48,32 @@ If you're new to sidekiq-cron, see the [docs](https://github.com/ondrejbartas/si
 ## API
 
 Requesting a Quote from Bloom Trade
+
 ```ruby
 client = BloomTradeClient::Client.new(token: "your-api-token-here")
 response = client.get_quote(
   base_currency: "BTC",
   counter_currency: "PHP",
   quote_type: "buy",
-  amount: 0.50,
+  amount: 0.50, # in BTC (base currency)
 )
 
 response.price
 response.bx8_fee
+```
+
+If you need to how much BTC (base currency) is X PHP, you can use:
+
+```
+response = client.get_quote(
+  base_currency: "BTC",
+  counter_currency: "PHP",
+  quote_type: "buy",
+  amount: 5_000, # in PHP (counter currency)
+  amount_type: "counter", # This tells BloomTrade we're asking how much BTC we'll get for PHP5,000
+)
+
+response.quoted_amount # this is where you'll get the BTC amount
 ```
 
 Updating a Quote from Bloom Trade
@@ -80,7 +97,7 @@ result = BloomTradeClient.convert(
 )
 ```
 
-See `spec/lib/bloom_trade_client/client_spec.rb` to see more examples of calls that can be made with BloomTrade.
+See `spec/acceptance` to see more examples of calls that can be made with `BloomTradeClient`.
 
 ## Development
 
