@@ -5,6 +5,7 @@ module BloomTradeClient
     attribute :counter_currency, String
     attribute :quote_type, String
     attribute :amount, BigDecimal
+    attribute :amount_type, String, lazy: true, default: "base"
 
     def path
       "/api/v1/quotes"
@@ -21,6 +22,7 @@ module BloomTradeClient
           counter_currency: counter_currency,
           quote_type: quote_type,
           amount: amount,
+          amount_type: amount_type,
         }
       }.to_json
     end

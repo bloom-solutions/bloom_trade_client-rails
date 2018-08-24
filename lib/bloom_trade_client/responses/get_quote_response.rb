@@ -5,7 +5,9 @@ module BloomTradeClient
       base_currency
       counter_currency
       quote_type
+      amount_type
       amount
+      quoted_amount
       price
       total
       bx8_fee
@@ -13,13 +15,21 @@ module BloomTradeClient
       expiration_timestamp
     ]
 
-    attribute :base_currency, String, lazy: true, default: :default_base_currency
+    attribute(:base_currency, String, {
+      lazy: true,
+      default: :default_base_currency,
+    })
     attribute(:counter_currency, String, {
       lazy: true,
       default: :default_counter_currency,
     })
     attribute :quote_type, String, lazy: true, default: :default_quote_type
     attribute :amount, BigDecimal, lazy: true, default: :default_amount
+    attribute :amount_type, String, lazy: true, default: :default_amount_type
+    attribute(:quoted_amount, BigDecimal, {
+      lazy: true,
+      default: :default_quoted_amount
+    })
     attribute :price, BigDecimal, lazy: true, default: :default_price
     attribute :total, BigDecimal, lazy: true, default: :default_total
     attribute :bx8_fee, BigDecimal, lazy: true, default: :default_bx8_fee

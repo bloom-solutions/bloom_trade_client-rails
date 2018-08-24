@@ -5,7 +5,7 @@ http_interactions:
     uri: https://staging.trade.bloom.solutions/api/v1/quotes
     body:
       encoding: UTF-8
-      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5","amount_type":"base"}}'
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"5000.0","amount_type":"counter"}}'
     headers:
       User-Agent:
       - Typhoeus - https://github.com/typhoeus/typhoeus
@@ -25,24 +25,24 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7b3f374b27686585115001174c4276d3"
+      - W/"8401dc7e77333b9cc310418230c83474"
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Request-Id:
-      - 395fa50a-2d6e-49cb-bddc-04745edca39e
+      - d4839fe9-3772-4a52-b787-8c6b4154aec8
       X-Runtime:
-      - '0.125915'
+      - '0.273257'
       X-Xss-Protection:
       - 1; mode=block
       Date:
-      - Fri, 24 Aug 2018 04:23:55 GMT
+      - Fri, 24 Aug 2018 04:11:44 GMT
       Content-Length:
-      - '266'
+      - '303'
     body:
       encoding: UTF-8
-      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","quoted_amount":"1.5","amount_type":"base","bx8_fee":"100.0","price":"335389.527434527587","total":"503084.29","expiration_timestamp":1535084935,"memo":"kbVyfSuMPgfUuuNnvHbYqGpldORN","quote_type":"sell"}'
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"5000.0","quoted_amount":"0.0149334511","amount_type":"counter","bx8_fee":"100.0","price":"334818.7883842985934545454545454740030203932","total":"5000.0","expiration_timestamp":1535084204,"memo":"poCUHYUAGIUckfrvcffKpuSWQjRV","quote_type":"sell"}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2018 04:23:55 GMT
+  recorded_at: Fri, 24 Aug 2018 04:11:44 GMT
 recorded_with: VCR 4.0.0
