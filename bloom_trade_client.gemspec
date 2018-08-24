@@ -27,17 +27,17 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency "api_client_base", "~> 1.0"
-  s.add_dependency "typhoeus"
-  s.add_dependency "light-service"
+  s.add_dependency "typhoeus", "~> 1.3"
+  s.add_dependency "light-service", "0.11.0"
   s.add_dependency "message_bus_client_worker", ">= 0.2.0"
-  s.add_dependency "rails", "~> 5.2.0"
-  s.add_dependency "virtus"
-  s.add_dependency "addressable"
+  s.add_dependency "rails", "~> 5.2"
+  s.add_dependency "virtus", "~> 1.0"
+  s.add_dependency "addressable", "~> 2.5"
 
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "sqlite3", "~> 1.3"
+  s.add_development_dependency "rspec-rails", "~> 3.8"
   s.add_development_dependency "pry"
-  s.add_development_dependency "factory_bot_rails"
-  s.add_development_dependency "vcr"
-  s.add_development_dependency "webmock"
+  s.add_development_dependency "factory_bot_rails", "~> 4.11"
+  s.add_development_dependency "vcr", "~> 4.0"
+  s.add_development_dependency "webmock", "~> 3.4"
 end
