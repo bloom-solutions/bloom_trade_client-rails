@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (0.13.0)
+    bloom_trade_client-rails (0.14.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
@@ -64,7 +64,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
-    api_client_base (1.2.0)
+    api_client_base (1.4.0)
       activesupport (>= 3.0)
       gem_config (>= 0.3.1)
       virtus (>= 1.0)
@@ -245,4 +245,4 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 BUNDLED WITH
-   1.16.3
+   1.16.4
