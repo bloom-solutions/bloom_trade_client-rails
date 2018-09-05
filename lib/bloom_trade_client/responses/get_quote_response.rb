@@ -34,9 +34,9 @@ module BloomTradeClient
     attribute :price, BigDecimal, lazy: true, default: :default_price
     attribute :total, BigDecimal, lazy: true, default: :default_total
     attribute :bx8_fee, BigDecimal, lazy: true, default: :default_bx8_fee
-    attribute(:stellar_account, String, {
+    attribute(:stellar_address, String, {
       lazy: true,
-      default: :default_stellar_account,
+      default: :default_stellar_address,
     })
     attribute :memo, String, lazy: true, default: :default_memo
     attribute(:expiration_timestamp, Integer, {
