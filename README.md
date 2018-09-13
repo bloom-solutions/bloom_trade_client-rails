@@ -35,7 +35,24 @@ BloomTradeClient.configure do |c|
 end
 ```
 
-5. Add the following to your sidekiq-cron schedule (unless you're already doing this for something else in your app):
+5. Add another initializer if you don't have one yet `config/initializers/message_bus_client_worker.rb`:
+
+```ruby
+MessageBusClientWorker.configure do |c|
+  c.subscriptions = {
+    "https://staging.trade.bloom.solutions" => {
+      BloomTradeClient::EXCHANGE_RATES_CHANNEL => {
+        processor: BloomTradeClient::ExchangeRates::Sync.to_s,
+        message_id: 0,
+      }
+    }
+  }
+end
+```
+
+This gem used to set up MessageBusClientWorker for you, but if you were to use that elsewhere in your app, that introduced the possibility overwriting the config accidentally. Setting it up explicitly avoids that.
+
+6. Add the following to your sidekiq-cron schedule (unless you're already doing this for something else in your app):
 
 ```yaml
 message_bus_client_worker:

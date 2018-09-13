@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Changed
+- Do not register the schedule; require devs to set it up themselves
+
 ## [0.14.1] - 2018-09-05
 ### Added
 - Fix `stellar_address`, not `stellar_account` (in `GetQuoteResponse`)

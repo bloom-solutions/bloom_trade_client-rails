@@ -9,12 +9,6 @@ RSpec.describe BloomTradeClient do
 
     expect(described_class.configuration.host).to eq "https://tradewebsite.com"
     expect(described_class.configuration.reserve_currency).to eq "USD"
-    subscription_config = MessageBusClientWorker.configuration.
-      subscriptions["https://tradewebsite.com"]\
-      [described_class::DEFAULT_CHANNEL]
-    expect(subscription_config[:processor]).
-      to eq BloomTradeClient::ExchangeRates::Sync.to_s
-    expect(subscription_config[:message_id]).to eq 0
   end
 
   describe ".convert" do
