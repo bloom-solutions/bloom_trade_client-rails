@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (0.14.1)
+    bloom_trade_client-rails (0.15.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
@@ -121,9 +121,9 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.0)
       mini_mime (>= 0.1.1)
-    marcel (0.3.2)
+    marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    message_bus_client_worker (0.2.0)
+    message_bus_client_worker (0.2.1)
       activesupport
       addressable
       gem_config
