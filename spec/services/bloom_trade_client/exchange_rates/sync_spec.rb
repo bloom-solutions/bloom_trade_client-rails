@@ -10,7 +10,7 @@ module BloomTradeClient
           "buy" => "7900",
           "mid" => "8000",
           "sell" => "8100",
-          "timestamp" => Time.current.to_i,
+          "expires_at" => Time.current.to_i,
         }
       end
       let(:data_2) do
@@ -20,7 +20,7 @@ module BloomTradeClient
           "buy" => "0.79",
           "mid" => "0.79",
           "sell" => "0.79",
-          "timestamp" => Time.current.to_i,
+          "expires_at" => Time.current.to_i,
         }
       end
       let(:data_3) do
@@ -30,7 +30,7 @@ module BloomTradeClient
           "buy" => "52",
           "mid" => "52",
           "sell" => "52",
-          "timestamp" => Time.current.to_i,
+          "expires_at" => Time.current.to_i,
         }
       end
 
@@ -51,6 +51,7 @@ module BloomTradeClient
         expect(btcusd.buy).to eq 7900
         expect(btcusd.sell).to eq 8100
         expect(btcusd.mid).to eq 8000
+        expect(btcusd.expires_at).to eq data_1['expires_at']
 
         audusd = BloomTradeClient::ExchangeRate.find_by(
           base_currency: "AUD",
@@ -61,6 +62,7 @@ module BloomTradeClient
         expect(audusd.buy).to eq 0.79
         expect(audusd.sell).to eq 0.79
         expect(audusd.mid).to eq 0.79
+        expect(audusd.expires_at).to eq data_2['expires_at']
 
         usdphp = BloomTradeClient::ExchangeRate.find_by(
           base_currency: "USD",
@@ -71,6 +73,7 @@ module BloomTradeClient
         expect(usdphp.buy).to eq 52
         expect(usdphp.sell).to eq 52
         expect(usdphp.mid).to eq 52
+        expect(usdphp.expires_at).to eq data_3['expires_at']
       end
 
       context "the exchange rates currently exist" do
@@ -101,6 +104,7 @@ module BloomTradeClient
           expect(btcusd.buy).to eq 7900
           expect(btcusd.mid).to eq 8000
           expect(btcusd.sell).to eq 8100
+          expect(btcusd.expires_at).to eq data_1['expires_at']
         end
       end
 
