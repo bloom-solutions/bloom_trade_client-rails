@@ -12,7 +12,7 @@ module BloomTradeClient
               base_currency: "PHP",
               counter_currency: "PHP"
             )
-            expect(resulting_rate).to eq 1.0
+            expect(resulting_rate.rate).to eq 1.0
           end
         end
 
@@ -28,7 +28,7 @@ module BloomTradeClient
               base_currency: "PHP",
               counter_currency: "USD"
             )
-            expect(resulting_rate).to eq 50.0
+            expect(resulting_rate.rate).to eq 50.0
           end
         end
 
@@ -44,8 +44,9 @@ module BloomTradeClient
               base_currency: "USD",
               counter_currency: "PHP"
             )
-            expect(resulting_rate).to eq 0.02
-            expect(1.0 / resulting_rate).to eq 50.0
+
+            expect(resulting_rate.rate).to eq 0.02
+            expect(1.0 / resulting_rate.rate).to eq 50.0
           end
         end
 
@@ -88,7 +89,7 @@ module BloomTradeClient
               base_currency: "BTC",
               counter_currency: "AED"
             )
-            expect(resulting_rate).to eq 0.0
+            expect(resulting_rate.rate).to eq 0.0
           end
         end
 
@@ -140,6 +141,23 @@ module BloomTradeClient
           end
         end
 
+        it "returns the rate with expiration time" do
+          create(:bloom_trade_client_exchange_rate, {
+            base_currency: "PHP",
+            counter_currency: "USD",
+            mid: 50.0,
+            expires_at: Time.current.to_i
+          })
+
+          resulting_rate = described_class.(
+            base_currency: "PHP",
+            counter_currency: "USD"
+          )
+
+          expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
+          expect(resulting_rate.rate).to eq 50.0
+          expect(resulting_rate.expires_at).to_not be_nil
+        end
       end
 
     end
