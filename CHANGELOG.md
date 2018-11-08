@@ -9,6 +9,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Changed
 - `BloomTradeClient::ExchangeRates::Sync` now returns `expires_at` field
 - `BloomTradeClient::ExchangeRates::Convert` now returns `BloomTradeClient::ConversionResult` object
+- Upgrade `loofah` gem to 2.2.3
 
 ## [0.15.0] - 2018-09-15
 ### Changed
