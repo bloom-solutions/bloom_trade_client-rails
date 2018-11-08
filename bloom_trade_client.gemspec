@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency "api_client_base", "~> 1.0"
   s.add_dependency "typhoeus", "~> 1.3"
   s.add_dependency "light-service", "0.11.0"
+  s.add_dependency "loofah", ">= 2.2.3"
   s.add_dependency "message_bus_client_worker", ">= 0.2.0"
   s.add_dependency "rails", "~> 5.2"
   s.add_dependency "virtus", "~> 1.0"
