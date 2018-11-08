@@ -12,9 +12,10 @@ module BloomTradeClient
           buy: data['buy'],
           sell: data['sell'],
           mid: data['mid'],
+          expires_at: data['expires_at'],
         )
-      end
 
+      end
     end
   end
 end
