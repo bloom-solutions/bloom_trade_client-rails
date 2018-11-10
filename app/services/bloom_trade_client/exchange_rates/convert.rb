@@ -13,8 +13,8 @@ module BloomTradeClient
 
         origin_rate = direct_rate(type, base_currency, reserve_currency)
         destination_rate = direct_rate(type, reserve_currency, counter_currency)
-
-        return origin_rate.rate * destination_rate.rate if origin_rate && destination_rate
+        reverse_rate = origin_rate.rate * destination_rate.rate if origin_rate && destination_rate
+        return ConversionResult.new(reverse_rate) if reverse_rate
 
         Rails.logger.error(
           "Unable to calculate rate #{base_currency}#{counter_currency}"
