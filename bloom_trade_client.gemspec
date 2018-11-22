@@ -33,6 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency "message_bus_client_worker", ">= 0.2.0"
   s.add_dependency "rails", "~> 5.2"
   s.add_dependency "virtus", "~> 1.0"
+  s.add_dependency "virtus-matchers"
   s.add_dependency "addressable", "~> 2.5"
 
   s.add_development_dependency "sqlite3", "~> 1.3"
