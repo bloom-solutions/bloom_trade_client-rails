@@ -5,7 +5,15 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [0.16.0] - 2018-11-09
+## [0.16.2] - 2018-11-23
+### Added
+- Install `virtus-matchers` gem
+- Unit test for `BloomTradeClient::ConversionResult`
+
+### Changed
+- Convert `BloomTradeClient::ConversionResult` to a Virtus model
+
+## [0.16.1] - 2018-11-09
 ### Fixed
 - Fix not returning `BloomTradeClient::ConversionResult` on reverse rates
 
