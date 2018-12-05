@@ -12,12 +12,7 @@ module BloomTradeClient
     end
 
     def default_errors
-      errors = if body.is_a? Hash
-                 body[:errors]
-               else
-                 JSON.parse(body)["errors"]
-               end
-
+      errors = body[:errors]
       errors.with_indifferent_access.deep_symbolize_keys if errors.present?
     end
   end
