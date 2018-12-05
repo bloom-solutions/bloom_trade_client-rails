@@ -64,7 +64,7 @@ If you're new to sidekiq-cron, see the [docs](https://github.com/ondrejbartas/si
 
 ## API
 
-Requesting a Quote from Bloom Trade
+#### Requesting a Quote from Bloom Trade
 
 ```ruby
 client = BloomTradeClient::Client.new(token: "your-api-token-here")
@@ -93,7 +93,14 @@ response = client.get_quote(
 response.quoted_amount # this is where you'll get the BTC amount
 ```
 
-Updating a Quote from Bloom Trade
+if there are any errors, you can inspect using:
+
+```
+response.success?
+response.errors
+```
+
+#### Updating a Quote from Bloom Trade
 
 ```ruby
 response = client.update_quote(
