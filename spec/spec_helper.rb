@@ -14,8 +14,10 @@ Dir[BloomTradeClient::Engine.root.join('spec/support/**/*.rb')].each do |f|
 end
 
 SPEC_DIR = Pathname.new(File.dirname(__FILE__))
-CONFIG = YAML.load_file(SPEC_DIR.join("config.yml")).
-  with_indifferent_access
+CONFIG = YAML.load_file(SPEC_DIR.join("config.yml"))
+  .with_indifferent_access
+
+FIXTURES_DIR = SPEC_DIR.join("fixtures")
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

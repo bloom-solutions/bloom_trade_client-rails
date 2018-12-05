@@ -1,0 +1,9 @@
+{
+  "errors":{
+    "description": "Hello",
+    "metadata": {
+      "max": "5.0"
+    }
+  }
+}
+
