@@ -22,7 +22,10 @@ RSpec.describe BloomTradeClient do
       expect(BloomTradeClient::ExchangeRates::Convert).to receive(:call)
 
       BloomTradeClient.convert(
-        base_currency: "BTC", counter_currency: "PHP", type: "buy"
+        base_currency: "BTC", 
+        counter_currency: "PHP", 
+        type: "buy",
+        user_id: nil
       )
     end
   end

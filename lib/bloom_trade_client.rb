@@ -28,11 +28,12 @@ module BloomTradeClient
     has :jwt_callback, classes: Object
   end
 
-  def self.convert(base_currency:, counter_currency:, type:)
+  def self.convert(base_currency:, counter_currency:, type:, user_id: nil)
     BloomTradeClient::ExchangeRates::Convert.(
       base_currency: base_currency,
       counter_currency: counter_currency,
-      type: type
+      type: type,
+      user_id: user_id
     )
   end
 end
