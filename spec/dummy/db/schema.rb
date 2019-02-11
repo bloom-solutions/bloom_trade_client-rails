@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_07_012906) do
+ActiveRecord::Schema.define(version: 2019_02_08_051452) do
 
   create_table "bloom_trade_client_exchange_rates", force: :cascade do |t|
     t.string "base_currency"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2018_11_07_012906) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "expires_at"
+    t.string "jwt_hash"
+    t.index ["buy", "sell", "jwt_hash"], name: "by_buy_sell_jwt_hash"
   end
 
 end
