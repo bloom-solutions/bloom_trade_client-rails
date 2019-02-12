@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 
 require "pry"
 require "rspec/rails"
+require "rspec-sidekiq"
 require "webmock/rspec"
 require "virtus/matchers/rspec"
 
