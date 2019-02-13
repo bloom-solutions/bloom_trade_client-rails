@@ -166,7 +166,7 @@ module BloomTradeClient
         end
 
         describe "converting with a given jwt" do
-          let(:jwt_hash) { Base64.encode64("my-jwt") }
+          let(:jwt_hash) { Digest::SHA256.base64digest("my-jwt") }
 
           context "direct_rate exists" do
             it "calculates using the direct rate" do

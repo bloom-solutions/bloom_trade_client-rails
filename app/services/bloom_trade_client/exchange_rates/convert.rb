@@ -29,7 +29,7 @@ module BloomTradeClient
         return nil unless %w(buy sell mid).include? type
         return ConversionResult.new(rate: 1.0) if base_currency == counter_currency
 
-        jwt_hash = jwt ? Base64.encode64(jwt) : nil
+        jwt_hash = jwt ? Digest::SHA256.base64digest(jwt) : nil
 
         exchange_rate = ExchangeRate.find_by(
           base_currency: base_currency,
