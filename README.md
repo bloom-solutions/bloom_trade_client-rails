@@ -32,32 +32,17 @@ mount BloomTradeClient::Engine => "/bloom_trade_client"
 BloomTradeClient.configure do |c|
   c.host = "https://staging.trade.bloom.solutions"
   c.reserve_currency = "PHP" # What the conversion service will use
+  c.jwt_callback = -> { ["my_token", "his_token", "her_token"] } # Returns a
+list of jwt
 end
 ```
 
-5. Add another initializer if you don't have one yet `config/initializers/message_bus_client_worker.rb`:
-
-```ruby
-MessageBusClientWorker.configure do |c|
-  c.subscriptions = {
-    "https://staging.trade.bloom.solutions" => {
-      BloomTradeClient::EXCHANGE_RATES_CHANNEL => {
-        processor: BloomTradeClient::ExchangeRates::Sync.to_s,
-        message_id: 0,
-      }
-    }
-  }
-end
-```
-
-This gem used to set up MessageBusClientWorker for you, but if you were to use that elsewhere in your app, that introduced the possibility overwriting the config accidentally. Setting it up explicitly avoids that.
-
-6. Add the following to your sidekiq-cron schedule (unless you're already doing this for something else in your app):
+5. Add the following to your sidekiq-cron schedule
 
 ```yaml
-message_bus_client_worker:
+exchange_rates:
   cron: "*/30 * * * * *"
-  class: "MessageBusClientWorker::EnqueuingWorker"
+  class: "BloomTradeClient::ExchangeRates::SyncJob"
 ```
 
 If you're new to sidekiq-cron, see the [docs](https://github.com/ondrejbartas/sidekiq-cron).
