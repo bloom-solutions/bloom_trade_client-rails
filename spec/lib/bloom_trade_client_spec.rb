@@ -25,7 +25,7 @@ RSpec.describe BloomTradeClient do
         base_currency: "BTC", 
         counter_currency: "PHP", 
         type: "buy",
-        user_id: nil
+        jwt: nil
       )
     end
   end

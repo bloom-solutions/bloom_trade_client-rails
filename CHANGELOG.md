@@ -11,7 +11,7 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 - New `jwt_callback` config which accepts an Object that responds to 
 `.call`.
 - New `SyncJob` that fetches rates globally and per JWT returned 
-- `BloomTradeClient::Convert` accepts an optional `user_id`.
+- `BloomTradeClient::Convert` accepts an optional `jwt`.
 by `jwt_callback`
 
 ## [0.17.0] - 2018-12-05

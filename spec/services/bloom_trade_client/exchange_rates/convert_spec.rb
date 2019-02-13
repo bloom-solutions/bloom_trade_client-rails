@@ -10,7 +10,7 @@ module BloomTradeClient
             resulting_rate = described_class.(
               base_currency: "PHP",
               counter_currency: "PHP",
-              user_id: nil
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 1.0
           end
@@ -27,7 +27,7 @@ module BloomTradeClient
             resulting_rate = described_class.(
               base_currency: "PHP",
               counter_currency: "USD",
-              user_id: nil
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 50.0
           end
@@ -44,7 +44,7 @@ module BloomTradeClient
             resulting_rate = described_class.(
               base_currency: "PHP",
               counter_currency: "USD",
-              user_id: nil
+              jwt: nil
             )
 
             expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
@@ -69,7 +69,7 @@ module BloomTradeClient
               base_currency: "BTC",
               counter_currency: "KRW",
               reserve_currency: "PHP",
-              user_id: nil
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 2_000_000
           end
@@ -91,7 +91,7 @@ module BloomTradeClient
             resulting_rate = described_class.(
               base_currency: "BTC",
               counter_currency: "AED",
-              user_id: nil
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 0.0
           end
@@ -137,7 +137,7 @@ module BloomTradeClient
                   base_currency: "BTC",
                   counter_currency: "PHP",
                   type: rate_type.to_s,
-                  user_id: nil
+                  jwt: nil
                 )
 
                 expect(resulting_rate.rate).to eq rate
@@ -157,7 +157,7 @@ module BloomTradeClient
           resulting_rate = described_class.(
             base_currency: "PHP",
             counter_currency: "USD",
-            user_id: nil
+            jwt: nil
           )
 
           expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
@@ -165,7 +165,7 @@ module BloomTradeClient
           expect(resulting_rate.expires_at).to_not be_nil
         end
 
-        describe "converting with a given user_id" do
+        describe "converting with a given jwt" do
           let(:jwt_hash) { Base64.encode64("my-jwt") }
 
           context "direct_rate exists" do
@@ -186,7 +186,7 @@ module BloomTradeClient
               resulting_rate = described_class.(
                 base_currency: "PHP",
                 counter_currency: "USD",
-                user_id: "my-jwt",
+                jwt: "my-jwt",
               )
               expect(resulting_rate.rate).to eq 80.0
             end
@@ -210,7 +210,7 @@ module BloomTradeClient
               resulting_rate = described_class.(
                 base_currency: "USD",
                 counter_currency: "PHP",
-                user_id: "my-jwt",
+                jwt: "my-jwt",
               )
               expect(resulting_rate.rate).to eq (1/80.0)
             end

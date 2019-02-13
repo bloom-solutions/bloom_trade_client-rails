@@ -7,13 +7,13 @@ module BloomTradeClient
         counter_currency:,
         reserve_currency: BloomTradeClient.configuration.reserve_currency,
         type: "mid",
-        user_id:
+        jwt:
       )
-        rate = direct_rate(type, base_currency, counter_currency, user_id)
+        rate = direct_rate(type, base_currency, counter_currency, jwt)
         return rate if rate
 
-        origin_rate = direct_rate(type, base_currency, reserve_currency, user_id)
-        destination_rate = direct_rate(type, reserve_currency, counter_currency, user_id)
+        origin_rate = direct_rate(type, base_currency, reserve_currency, jwt)
+        destination_rate = direct_rate(type, reserve_currency, counter_currency, jwt)
         reverse_rate = origin_rate.rate * destination_rate.rate if origin_rate && destination_rate
         return ConversionResult.new(rate: reverse_rate) if reverse_rate
 
@@ -25,11 +25,11 @@ module BloomTradeClient
 
       private
 
-      def self.direct_rate(type, base_currency, counter_currency, user_id)
+      def self.direct_rate(type, base_currency, counter_currency, jwt)
         return nil unless %w(buy sell mid).include? type
         return ConversionResult.new(rate: 1.0) if base_currency == counter_currency
 
-        jwt_hash = user_id ? Base64.encode64(user_id) : nil
+        jwt_hash = jwt ? Base64.encode64(jwt) : nil
 
         exchange_rate = ExchangeRate.find_by(
           base_currency: base_currency,
