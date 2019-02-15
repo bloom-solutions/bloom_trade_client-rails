@@ -5,12 +5,12 @@ module BloomTradeClient
     describe Convert do
 
       describe ".call" do
-
         context "base and counter_currency are the same" do
           it "returns 1.0" do
             resulting_rate = described_class.(
               base_currency: "PHP",
-              counter_currency: "PHP"
+              counter_currency: "PHP",
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 1.0
           end
@@ -26,7 +26,8 @@ module BloomTradeClient
 
             resulting_rate = described_class.(
               base_currency: "PHP",
-              counter_currency: "USD"
+              counter_currency: "USD",
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 50.0
           end
@@ -42,7 +43,8 @@ module BloomTradeClient
 
             resulting_rate = described_class.(
               base_currency: "PHP",
-              counter_currency: "USD"
+              counter_currency: "USD",
+              jwt: nil
             )
 
             expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
@@ -66,7 +68,8 @@ module BloomTradeClient
             resulting_rate = described_class.(
               base_currency: "BTC",
               counter_currency: "KRW",
-              reserve_currency: "PHP"
+              reserve_currency: "PHP",
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 2_000_000
           end
@@ -87,7 +90,8 @@ module BloomTradeClient
 
             resulting_rate = described_class.(
               base_currency: "BTC",
-              counter_currency: "AED"
+              counter_currency: "AED",
+              jwt: nil
             )
             expect(resulting_rate.rate).to eq 0.0
           end
@@ -133,6 +137,7 @@ module BloomTradeClient
                   base_currency: "BTC",
                   counter_currency: "PHP",
                   type: rate_type.to_s,
+                  jwt: nil
                 )
 
                 expect(resulting_rate.rate).to eq rate
@@ -151,12 +156,65 @@ module BloomTradeClient
 
           resulting_rate = described_class.(
             base_currency: "PHP",
-            counter_currency: "USD"
+            counter_currency: "USD",
+            jwt: nil
           )
 
           expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
           expect(resulting_rate.rate).to eq 50.0
           expect(resulting_rate.expires_at).to_not be_nil
+        end
+
+        describe "converting with a given jwt" do
+          let(:jwt_hash) { Digest::SHA256.base64digest("my-jwt") }
+
+          context "direct_rate exists" do
+            it "calculates using the direct rate" do
+              create(:bloom_trade_client_exchange_rate, {
+                base_currency: "PHP",
+                counter_currency: "USD",
+                mid: 50.0,
+                jwt_hash: nil,
+              })
+              create(:bloom_trade_client_exchange_rate, {
+                base_currency: "PHP",
+                counter_currency: "USD",
+                mid: 80.0,
+                jwt_hash: jwt_hash,
+              })
+
+              resulting_rate = described_class.(
+                base_currency: "PHP",
+                counter_currency: "USD",
+                jwt: "my-jwt",
+              )
+              expect(resulting_rate.rate).to eq 80.0
+            end
+          end
+
+          context "reverse_rate exists" do
+            it "calculates using the reverse rate" do
+              create(:bloom_trade_client_exchange_rate, {
+                base_currency: "PHP",
+                counter_currency: "USD",
+                mid: 50.0,
+                jwt_hash: nil,
+              })
+              create(:bloom_trade_client_exchange_rate, {
+                base_currency: "PHP",
+                counter_currency: "USD",
+                mid: 80.0,
+                jwt_hash: jwt_hash,
+              })
+
+              resulting_rate = described_class.(
+                base_currency: "USD",
+                counter_currency: "PHP",
+                jwt: "my-jwt",
+              )
+              expect(resulting_rate.rate).to eq (1/80.0)
+            end
+          end
         end
       end
 

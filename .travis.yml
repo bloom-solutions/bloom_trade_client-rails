@@ -4,6 +4,8 @@ cache: bundler
 sudo: false
 rvm:
   - 2.5.1
+services:
+  - redis-server
 before_script:
   - ./bin/rails db:migrate RAILS_ENV=test
   - cp spec/config.yml{.sample,}
