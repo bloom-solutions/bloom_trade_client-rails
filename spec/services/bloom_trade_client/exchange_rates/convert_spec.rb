@@ -169,20 +169,23 @@ module BloomTradeClient
           let(:jwt_hash) { Digest::SHA256.base64digest("my-jwt") }
 
           context "direct_rate exists" do
-            it "calculates using the direct rate" do
+            before do
               create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "USD",
                 mid: 50.0,
                 jwt_hash: nil,
               })
+
               create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "USD",
                 mid: 80.0,
                 jwt_hash: jwt_hash,
               })
+            end
 
+            it "calculates using the direct rate" do
               resulting_rate = described_class.(
                 base_currency: "PHP",
                 counter_currency: "USD",
@@ -193,7 +196,7 @@ module BloomTradeClient
           end
 
           context "reverse_rate exists" do
-            it "calculates using the reverse rate" do
+            before do
               create(:bloom_trade_client_exchange_rate, {
                 base_currency: "PHP",
                 counter_currency: "USD",
@@ -206,7 +209,9 @@ module BloomTradeClient
                 mid: 80.0,
                 jwt_hash: jwt_hash,
               })
+            end
 
+            it "calculates using the reverse rate" do
               resulting_rate = described_class.(
                 base_currency: "USD",
                 counter_currency: "PHP",

@@ -9,11 +9,11 @@ module BloomTradeClient
         type: "mid",
         jwt:
       )
-        rate = direct_rate(type, base_currency, counter_currency, jwt)
+        rate = calculate_rate(type, base_currency, counter_currency, jwt)
         return rate if rate
 
-        origin_rate = direct_rate(type, base_currency, reserve_currency, jwt)
-        destination_rate = direct_rate(type, reserve_currency, counter_currency, jwt)
+        origin_rate = calculate_rate(type, base_currency, reserve_currency, jwt)
+        destination_rate = calculate_rate(type, reserve_currency, counter_currency, jwt)
         reverse_rate = origin_rate.rate * destination_rate.rate if origin_rate && destination_rate
         return ConversionResult.new(rate: reverse_rate) if reverse_rate
 
@@ -23,40 +23,47 @@ module BloomTradeClient
         return ConversionResult.new(rate: 0.0)
       end
 
-      private
-
-      def self.direct_rate(type, base_currency, counter_currency, jwt)
-        return nil unless %w(buy sell mid).include? type
+      def self.calculate_rate(type, base_currency, counter_currency, jwt)
+        return unless %w(buy sell mid).include? type
         return ConversionResult.new(rate: 1.0) if base_currency == counter_currency
 
         jwt_hash = jwt ? Digest::SHA256.base64digest(jwt) : nil
+        opts = { 
+          base_currency: base_currency, 
+          counter_currency: counter_currency, 
+          jwt_hash: jwt_hash 
+        }
 
-        exchange_rate = ExchangeRate.find_by(
-          base_currency: base_currency,
-          counter_currency: counter_currency,
-          jwt_hash: jwt_hash
-        )
-
-        if exchange_rate
-          return ConversionResult.new(
-            rate: exchange_rate.send(type.to_sym),
-            expires_at: exchange_rate.expires_at
-          )
-        end
-
-        reversed_rate = ExchangeRate.find_by(
-          base_currency: counter_currency,
-          counter_currency: base_currency,
-          jwt_hash: jwt_hash
-        )
-
-        if reversed_rate
-          return ConversionResult.new(
-            rate: 1.0 / reversed_rate.send(type.to_sym),
-            expires_at: reversed_rate.expires_at
-          )
-        end
+        direct_rate_for(type, opts) || reversed_rate_for(type, opts)
       end
+      private_class_method :calculate_rate
+
+      def self.direct_rate_for(type, opts)
+        rate = ExchangeRate.find_by(opts)
+        return unless rate
+
+        ConversionResult.new(
+          rate: rate.send(type.to_sym),
+          expires_at: rate.expires_at
+        )
+      end
+      private_class_method :direct_rate_for
+
+      def self.reversed_rate_for(type, opts)
+        rate = ExchangeRate.find_by(
+          base_currency: opts[:counter_currency],
+          counter_currency: opts[:base_currency],
+          jwt_hash: opts[:jwt_hash]
+        )
+        return unless rate
+
+        ConversionResult.new(
+          rate: 1.0 / rate.send(type.to_sym),
+          expires_at: rate.expires_at
+        )
+      end
+      private_class_method :reversed_rate_for
+
     end
   end
 end
