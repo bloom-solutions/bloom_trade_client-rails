@@ -17,13 +17,15 @@ module BloomTradeClient
         end
 
         context "direct_rate exists" do
-          it "calculates using the direct rate" do
+          before do
             create(:bloom_trade_client_exchange_rate, {
               base_currency: "PHP",
               counter_currency: "USD",
               mid: 50.0,
             })
+          end
 
+          it "calculates using the direct rate" do
             resulting_rate = described_class.(
               base_currency: "PHP",
               counter_currency: "USD",
@@ -34,26 +36,27 @@ module BloomTradeClient
         end
 
         context "reversed_rate exists" do
-          it "calculates by dividing with 1" do
+          before do
             create(:bloom_trade_client_exchange_rate, {
               base_currency: "PHP",
               counter_currency: "USD",
               mid: 50.0,
             })
+          end
 
+          it "calculates by dividing with 1" do
             resulting_rate = described_class.(
               base_currency: "PHP",
               counter_currency: "USD",
               jwt: nil
             )
-
             expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
             expect(resulting_rate.rate).to eq 50
           end
         end
 
         context "currency_pair don't exist, use reserve_currency" do
-          it "calculates by using the reserve currency" do
+          before do
             create(:bloom_trade_client_exchange_rate, {
               base_currency: "PHP",
               counter_currency: "BTC",
@@ -64,7 +67,9 @@ module BloomTradeClient
               counter_currency: "KRW",
               mid: 20,
             })
+          end
 
+          it "calculates by using the reserve currency" do
             resulting_rate = described_class.(
               base_currency: "BTC",
               counter_currency: "KRW",
@@ -76,7 +81,7 @@ module BloomTradeClient
         end
 
         context "currency pair don't exist, unable to use reserve_currency" do
-          it "returns 0.0" do
+          before do
             create(:bloom_trade_client_exchange_rate, {
               base_currency: "PHP",
               counter_currency: "BTC",
@@ -87,7 +92,9 @@ module BloomTradeClient
               counter_currency: "KRW",
               mid: 20,
             })
+          end
 
+          it "returns 0.0" do
             resulting_rate = described_class.(
               base_currency: "BTC",
               counter_currency: "AED",
@@ -193,6 +200,15 @@ module BloomTradeClient
               )
               expect(resulting_rate.rate).to eq 80.0
             end
+
+            it "returns the global direct rate if none is found for that jwt_hash" do
+              resulting_rate = described_class.(
+                base_currency: "PHP",
+                counter_currency: "USD",
+                jwt: "a-non-existent-jwt",
+              )
+              expect(resulting_rate.rate).to eq 50.0
+            end
           end
 
           context "reverse_rate exists" do
@@ -218,6 +234,15 @@ module BloomTradeClient
                 jwt: "my-jwt",
               )
               expect(resulting_rate.rate).to eq (1/80.0)
+            end
+
+            it "returns the global reverse rate if none is found for that jwt_hash" do
+              resulting_rate = described_class.(
+                base_currency: "PHP",
+                counter_currency: "USD",
+                jwt: "a-non-existent-jwt",
+              )
+              expect(resulting_rate.rate).to eq 50.0
             end
           end
         end

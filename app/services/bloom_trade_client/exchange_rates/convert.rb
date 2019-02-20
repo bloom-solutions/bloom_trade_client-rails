@@ -34,6 +34,13 @@ module BloomTradeClient
           jwt_hash: jwt_hash 
         }
 
+        if jwt_hash.present?
+          rate = direct_rate_for(type, opts) || reversed_rate_for(type, opts)
+          return rate if rate
+          global_opts = opts.merge(jwt_hash: nil)
+          return direct_rate_for(type, global_opts) || reversed_rate_for(type, global_opts)
+        end
+
         direct_rate_for(type, opts) || reversed_rate_for(type, opts)
       end
       private_class_method :calculate_rate
