@@ -17,7 +17,9 @@ module BloomTradeClient
         end
       end
 
-      it "fetches rates globally and per JWT given", vcr: {record: :once} do
+      it("fetches rates globally and per JWT given", {
+        vcr: {record: :once, match_requests_on: [:method]},
+      }) do
         described_class.new.perform
 
         expect(BloomTradeClient::ExchangeRate.count).to be > 0

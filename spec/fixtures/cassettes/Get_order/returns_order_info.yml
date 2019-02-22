@@ -1,0 +1,160 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://staging.trade.bloom.solutions/api/v2/orders
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Length:
+      - '1722'
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Cloud-Trace-Context:
+      - 85dc5e3070e3408086b863ec6a5d3a55;o=1
+      X-Request-Id:
+      - 663faf37-d593-47ef-8338-980eb9c25db0
+      X-Runtime:
+      - '0.004482'
+      Date:
+      - Sat, 23 Feb 2019 00:49:17 GMT
+    body:
+      encoding: UTF-8
+      string: |
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>The page you were looking for doesn't exist (404)</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>
+          .rails-default-error-page {
+            background-color: #EFEFEF;
+            color: #2E2F30;
+            text-align: center;
+            font-family: arial, sans-serif;
+            margin: 0;
+          }
+
+          .rails-default-error-page div.dialog {
+            width: 95%;
+            max-width: 33em;
+            margin: 4em auto 0;
+          }
+
+          .rails-default-error-page div.dialog > div {
+            border: 1px solid #CCC;
+            border-right-color: #999;
+            border-left-color: #999;
+            border-bottom-color: #BBB;
+            border-top: #B00100 solid 4px;
+            border-top-left-radius: 9px;
+            border-top-right-radius: 9px;
+            background-color: white;
+            padding: 7px 12% 0;
+            box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+          }
+
+          .rails-default-error-page h1 {
+            font-size: 100%;
+            color: #730E15;
+            line-height: 1.5em;
+          }
+
+          .rails-default-error-page div.dialog > p {
+            margin: 0 0 1em;
+            padding: 1em;
+            background-color: #F7F7F7;
+            border: 1px solid #CCC;
+            border-right-color: #999;
+            border-left-color: #999;
+            border-bottom-color: #999;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-top-color: #DADADA;
+            color: #666;
+            box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+          }
+          </style>
+        </head>
+
+        <body class="rails-default-error-page">
+          <!-- This file lives in public/404.html -->
+          <div class="dialog">
+            <div>
+              <h1>The page you were looking for doesn't exist.</h1>
+              <p>You may have mistyped the address or the page may have moved.</p>
+            </div>
+            <p>If you are the application owner check the logs for more information.</p>
+          </div>
+        </body>
+        </html>
+    http_version: 
+  recorded_at: Sat, 23 Feb 2019 00:49:18 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/LZZW
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"f5db579d6d4c2698b4f98eb461c4a588"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 43f17bf413574c27cecf6aa28377dec7;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 756884c0-797d-4b28-9d6f-fc9a33cea105
+      X-Runtime:
+      - '0.222976'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Sat, 23 Feb 2019 02:01:30 GMT
+      Content-Length:
+      - '195'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"0.001","outgoing_amount":"182.45","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"182448.35139997214425","received_amount":"0.001","status":"completed"}'
+    http_version: 
+  recorded_at: Sat, 23 Feb 2019 02:01:30 GMT
+recorded_with: VCR 4.0.0
