@@ -31,6 +31,23 @@ module BloomTradeClient
             )
             expect(resulting_rate.rate).to eq 50.0
           end
+
+          it "errors if direct rate has expired" do
+            create(:bloom_trade_client_exchange_rate, {
+              base_currency: "PHP",
+              counter_currency: "USD",
+              mid: 50.0,
+              expires_at: 2.days.ago,
+            })
+
+            expect {
+              described_class.(
+                base_currency: "PHP",
+                counter_currency: "USD",
+                jwt: nil
+              )
+            }.to raise_error(BloomTradeClient::ExpiredRateError)
+          end
         end
 
         context "reversed_rate exists" do
@@ -42,13 +59,30 @@ module BloomTradeClient
             })
 
             resulting_rate = described_class.(
-              base_currency: "PHP",
-              counter_currency: "USD",
+              base_currency: "USD",
+              counter_currency: "PHP",
               jwt: nil
             )
 
             expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
-            expect(resulting_rate.rate).to eq 50
+            expect(resulting_rate.rate).to eq 1 / 50.0
+          end
+
+          it "errors if reverse rate has expired" do
+            create(:bloom_trade_client_exchange_rate, {
+              base_currency: "PHP",
+              counter_currency: "USD",
+              mid: 50.0,
+              expires_at: 2.days.ago,
+            })
+
+            expect {
+              described_class.(
+                base_currency: "USD",
+                counter_currency: "PHP",
+                jwt: nil
+              )
+            }.to raise_error(BloomTradeClient::ExpiredRateError)
           end
         end
 
@@ -151,7 +185,7 @@ module BloomTradeClient
             base_currency: "PHP",
             counter_currency: "USD",
             mid: 50.0,
-            expires_at: Time.current.to_i
+            expires_at: 3.days.from_now
           })
 
           resulting_rate = described_class.(
