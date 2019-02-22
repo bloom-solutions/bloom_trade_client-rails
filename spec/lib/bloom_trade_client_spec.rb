@@ -17,11 +17,11 @@ RSpec.describe BloomTradeClient do
     expect(described_class.configuration.jwt_callback).to eq callback
   end
 
-  describe ".convert" do
+  describe ".convert!" do
     it "calls the BloomTradeClient::ExchangeRates::Convert#call" do
       expect(BloomTradeClient::ExchangeRates::Convert).to receive(:call)
 
-      BloomTradeClient.convert(
+      BloomTradeClient.convert!(
         base_currency: "BTC", 
         counter_currency: "PHP", 
         type: "buy",

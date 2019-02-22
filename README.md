@@ -99,9 +99,10 @@ This so that Bloom Trade can issue the corresponding base/counter currency (base
 to fulfill the quote.
 
 Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
-from either `["buy", "sell", "mid"]`. Mid is the average value.
+from either `["buy", "sell", "mid"]`. Mid is the average value. If the rate has
+expired, this method will raise `BloomTradeClient::ExpiredRateError`.
 ```ruby
-result = BloomTradeClient.convert(
+result = BloomTradeClient.convert!(
   base_currency: "BTC", counter_currency: "USD", type: "buy"
 )
 ```
