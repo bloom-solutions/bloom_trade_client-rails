@@ -98,6 +98,8 @@ GEM
     factory_bot_rails (4.11.0)
       factory_bot (~> 4.11.0)
       railties (>= 3.0.0)
+    fakeredis (0.7.0)
+      redis (>= 3.2, < 5.0)
     ffi (1.10.0)
     gem_config (0.3.1)
     globalid (0.4.2)
@@ -227,6 +229,7 @@ PLATFORMS
 DEPENDENCIES
   bloom_trade_client-rails!
   factory_bot_rails (~> 4.11)
+  fakeredis
   message_bus-client!
   pry
   rspec-rails (~> 3.8)
@@ -236,4 +239,4 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
