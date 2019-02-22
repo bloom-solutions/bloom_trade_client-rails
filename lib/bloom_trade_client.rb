@@ -6,6 +6,7 @@ require 'virtus'
 
 require 'bloom_trade_client/engine'
 require 'bloom_trade_client/client'
+require 'bloom_trade_client/exceptions'
 require 'bloom_trade_client/requests/base_authenticated_request'
 require 'bloom_trade_client/requests/get_quote_request'
 require 'bloom_trade_client/requests/update_quote_request'
@@ -29,7 +30,7 @@ module BloomTradeClient
     has :jwt_callback, classes: Object
   end
 
-  def self.convert(base_currency:, counter_currency:, type:, jwt: nil)
+  def self.convert!(base_currency:, counter_currency:, type:, jwt: nil)
     BloomTradeClient::ExchangeRates::Convert.(
       base_currency: base_currency,
       counter_currency: counter_currency,
