@@ -8,31 +8,24 @@ module BloomTradeClient
       let(:processor) { BloomTradeClient::ExchangeRates::Sync }
       let(:global_channel) { BloomTradeClient::RATES_CHANNEL }
       let(:org_channel) { BloomTradeClient::ORG_RATES_CHANNEL }
+      let(:token) { CONFIG[:bloom_trade_api_token] }
 
       before do
         BloomTradeClient.configure do |c|
           c.host = host
-          c.jwt_callback = -> { [CONFIG[:bloom_trade_api_token]] }
+          c.jwt_callback = -> { [token] }
         end
       end
 
-      it "fetches rates globally and per JWT given" do
-        expect(MessageBusClientWorker::SubscriptionWorker).to receive(:perform_async).
-          with(host, {channels: {global_channel => {processor: processor.to_s, message_id: 0}}})
-
-        callback = BloomTradeClient.configuration.jwt_callback
-
-        callback.().each do |client|
-          expect(MessageBusClientWorker::SubscriptionWorker).to receive(:perform_async).
-            with(host, {
-              headers: { "Authorization" => "Bearer #{client}" },
-              channels: {
-                org_channel => { processor: processor.to_s, message_id: 0 }
-              }
-            })
-        end
-
+      it "fetches rates globally and per JWT given", vcr: {record: :once} do
         described_class.new.perform
+
+        expect(BloomTradeClient::ExchangeRate.count).to be > 0
+        org_rates = BloomTradeClient::ExchangeRate.where(
+          jwt_hash: Digest::SHA256.base64digest(token)
+        )
+
+        expect(org_rates.count).to be > 0
       end
     end
   end

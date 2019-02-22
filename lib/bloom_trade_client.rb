@@ -24,7 +24,7 @@ module BloomTradeClient
   with_configuration do
     has(:host, {
       classes: String,
-      default: 'https://staging.trade.bloom.solutions',
+      default: 'https://trade-staging.bloom.solutions',
     })
     has :reserve_currency, classes: String, default: 'PHP'
     has :jwt_callback, classes: Object
