@@ -39,7 +39,7 @@ RSpec.describe "Update Quote" do
       )
 
       expect(response).not_to be_success
-      json = JSON.parse(response.raw_response.body)
+      json = response.parsed_body
 
       expect(json["errors"]["destination_memo"])
         .to include "is already assigned"

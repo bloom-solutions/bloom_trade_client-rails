@@ -9,6 +9,9 @@ Versioning](http://semver.org/spec/v2.0.0.html).
 ### Added
 - `#get_order` to fetch order details
 
+### Changed
+- A response's body now returns the **unparsed** string. Use **parsed_body** instead
+
 ## [1.0.0] - 2019-02-22
 ### Changed
 - `BloomTradeClient::ExchangeRates::Convert` raises an error if rate has
