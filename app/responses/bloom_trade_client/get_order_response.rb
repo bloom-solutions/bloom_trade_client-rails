@@ -6,7 +6,7 @@ module BloomTradeClient
     private
 
     def default_order
-      BloomTradeClient::Order.new(body)
+      BloomTradeClient::Order.new(parsed_body)
     end
 
   end

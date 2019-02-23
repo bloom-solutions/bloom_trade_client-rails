@@ -48,7 +48,7 @@ module BloomTradeClient
 
     PARAMS.each do |method_name|
       define_method :"default_#{method_name}" do
-        body[method_name]
+        parsed_body[method_name]
       end
     end
 
