@@ -7,12 +7,6 @@ require 'virtus'
 require 'bloom_trade_client/engine'
 require 'bloom_trade_client/client'
 require 'bloom_trade_client/exceptions'
-require 'bloom_trade_client/requests/base_authenticated_request'
-require 'bloom_trade_client/requests/get_quote_request'
-require 'bloom_trade_client/requests/update_quote_request'
-require 'bloom_trade_client/responses/base_response'
-require 'bloom_trade_client/responses/get_quote_response'
-require 'bloom_trade_client/responses/update_quote_response'
 
 module BloomTradeClient
 
