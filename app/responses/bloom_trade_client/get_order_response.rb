@@ -1,7 +1,10 @@
 module BloomTradeClient
   class GetOrderResponse < BaseResponse
 
-    attribute :order, BloomTradeClient::Order, default: :default_order
+    attribute(:order, BloomTradeClient::Order, {
+      lazy: true,
+      default: :default_order,
+    })
 
     private
 
