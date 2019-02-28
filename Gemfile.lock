@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (2.0.0)
+    bloom_trade_client-rails (2.1.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
@@ -137,7 +137,7 @@ GEM
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
-    message_bus_client_worker (1.1.1)
+    message_bus_client_worker (1.2.0)
       activesupport
       addressable
       excon
