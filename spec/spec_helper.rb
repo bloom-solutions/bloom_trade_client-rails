@@ -8,6 +8,8 @@ require "fakeredis"
 require "pry"
 require "rspec/rails"
 require "rspec-sidekiq"
+require "stellar-sdk"
+require "wait"
 require "webmock/rspec"
 require "virtus/matchers/rspec"
 
