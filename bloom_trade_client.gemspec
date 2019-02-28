@@ -45,4 +45,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "vcr", "~> 4.0"
   s.add_development_dependency "webmock", "~> 3.4"
   s.add_development_dependency "fakeredis"
+  s.add_development_dependency "stellar-sdk"
+  s.add_development_dependency "wait"
 end

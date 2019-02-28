@@ -8,6 +8,7 @@ module BloomTradeClient
     api_action :get_quote
     api_action :update_quote
     api_action :get_order, args: [:memo]
+    api_action :complete_order, args: [:memo]
 
     private
 

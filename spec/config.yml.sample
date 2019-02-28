@@ -1,3 +1,24 @@
 ---
-host: "https://staging.trade.bloom.solutions"
+host: "https://trade-staging.bloom.solutions"
 bloom_trade_api_token: changeme
+
+# So we can send BloomTrade some assets. These are just unused/random seeds so
+# tests don't blow up with invalid seed issues
+bloomx_issuer_seed: SCXQMAKB3Q2TKTTC2LEZSWRQWGQ3T2QHQITC73WG6QR2CYILOW2WQRDN
+bloomx_issuer_address: GADHWOGRVRCNZ5C2BGAF4NSTW6TJQD7HB6LQFHHD43XGW77TVLXLFLTH
+bx8_issuer_seed: SAPJ3HVLB6UXBWF5Q7YPYUAT67WM65AV6MQM66TYRPCHZCPVHAT5STQZ
+bx8_issuer_address: GD2A7T3EMTGO3EU4S6OLOULOYKQ6OONL2Z3F7DBSKUT55SMUPS5G2MTE
+horizon_url: https://horizon-testnet.stellar.bloomx.org
+bloom_trade_address: GA7ZOD3XBJP4NEUANYRQMOQTTPBXKGC4LMBDBNKNSGI5JGKZFDGMB6IE
+
+# Account for us to test interacting with BloomTrade. Must:
+# - be funded with XLM
+# - trust bloomx's BTCT
+# - trust BloomTrade's PHPT
+# - trust BX8's BX8
+# Note: this seed is not the one we used to record the tests and therefore
+# *not* the seed of GAXG. We left GAXG as the stellar_address so that VCR
+# cassettes can play back without issues. To re-record cassettes, you will
+# need to replace stellar_seed with the seed of GAXG.
+stellar_seed: SBGNHDUR57YZW7G4U72T4KYJK73SCYW56646LUK2FFAT35AMQGKQS5RQ
+stellar_address: GAXGEHJKNCQHFVKGJDJYV4PIVWIW7V6A6IV3QZ44HIB236SNHHLYKDAG

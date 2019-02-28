@@ -1,0 +1,1273 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://trade-staging.bloom.solutions/api/v1/quotes
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5","amount_type":"base"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"b3ecda0b7b3f785cb77cfccc1462949e"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 2121f977bec04c24c616d5f6264cad4b;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - c6e089f6-94db-44c4-a122-670431cdcd18
+      X-Runtime:
+      - '0.196277'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:21 GMT
+      Content-Length:
+      - '322'
+    body:
+      encoding: UTF-8
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","quoted_amount":"1.5","amount_type":"base","bx8_fee":"20.0","price":"195534.8617984523905968","total":"293302.29","expiration_timestamp":1551355341,"memo":"GFXN","stellar_address":"[bloom_trade_address]","quote_type":"sell"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:21 GMT
+- request:
+    method: put
+    uri: https://trade-staging.bloom.solutions/api/v1/quotes/GFXN
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"destination_memo":"ABC","destination_address":"[stellar_address]"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - c65aed97d5934156c5863f9d6499a871;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 1d1b5b5d-aed4-490c-a9ed-325ecc958a9f
+      X-Runtime:
+      - '0.026290'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:21 GMT
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:21 GMT
+- request:
+    method: get
+    uri: https://horizon-testnet.stellar.bloomx.org/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept:
+      - application/hal+json,application/problem+json,application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0
+      Content-Disposition:
+      - inline
+      Content-Type:
+      - application/hal+json; charset=utf-8
+      Date:
+      - Thu, 28 Feb 2019 11:02:22 GMT
+      Vary:
+      - Origin
+      X-Ratelimit-Limit:
+      - '1576000'
+      X-Ratelimit-Remaining:
+      - '1575999'
+      X-Ratelimit-Reset:
+      - '3600'
+      Content-Length:
+      - '1459'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "_links": {
+            "account": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/{account_id}",
+              "templated": true
+            },
+            "account_transactions": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/{account_id}/transactions{?cursor,limit,order}",
+              "templated": true
+            },
+            "assets": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/assets{?asset_code,asset_issuer,cursor,limit,order}",
+              "templated": true
+            },
+            "metrics": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/metrics"
+            },
+            "order_book": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/order_book{?selling_asset_type,selling_asset_code,selling_asset_issuer,buying_asset_type,buying_asset_code,buying_asset_issuer,limit}",
+              "templated": true
+            },
+            "self": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/"
+            },
+            "transaction": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/transactions/{hash}",
+              "templated": true
+            },
+            "transactions": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/transactions{?cursor,limit,order}",
+              "templated": true
+            }
+          },
+          "horizon_version": "v0.14.2",
+          "core_version": "v10.1.0",
+          "history_latest_ledger": 17603,
+          "history_elder_ledger": 8604,
+          "core_latest_ledger": 17603,
+          "network_passphrase": "Test SDF Network ; September 2015",
+          "protocol_version": 10
+        }
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:22 GMT
+- request:
+    method: get
+    uri: https://horizon-testnet.stellar.bloomx.org/accounts/[bx8_issuer_address]
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept:
+      - application/hal+json,application/problem+json,application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0
+      Content-Disposition:
+      - inline
+      Content-Type:
+      - application/hal+json; charset=utf-8
+      Date:
+      - Thu, 28 Feb 2019 11:02:23 GMT
+      Vary:
+      - Origin
+      X-Ratelimit-Limit:
+      - '1576000'
+      X-Ratelimit-Remaining:
+      - '1575998'
+      X-Ratelimit-Reset:
+      - '3599'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "_links": {
+            "self": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]"
+            },
+            "transactions": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/transactions{?cursor,limit,order}",
+              "templated": true
+            },
+            "operations": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/operations{?cursor,limit,order}",
+              "templated": true
+            },
+            "payments": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/payments{?cursor,limit,order}",
+              "templated": true
+            },
+            "effects": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/effects{?cursor,limit,order}",
+              "templated": true
+            },
+            "offers": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/offers{?cursor,limit,order}",
+              "templated": true
+            },
+            "trades": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/trades{?cursor,limit,order}",
+              "templated": true
+            },
+            "data": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bx8_issuer_address]/data/{key}",
+              "templated": true
+            }
+          },
+          "id": "[bx8_issuer_address]",
+          "paging_token": "",
+          "account_id": "[bx8_issuer_address]",
+          "sequence": "49070001356840",
+          "subentry_count": 0,
+          "thresholds": {
+            "low_threshold": 0,
+            "med_threshold": 0,
+            "high_threshold": 0
+          },
+          "flags": {
+            "auth_required": false,
+            "auth_revocable": false
+          },
+          "balances": [
+            {
+              "balance": "9999.9996000",
+              "buying_liabilities": "0.0000000",
+              "selling_liabilities": "0.0000000",
+              "asset_type": "native"
+            }
+          ],
+          "signers": [
+            {
+              "public_key": "[bx8_issuer_address]",
+              "weight": 1,
+              "key": "[bx8_issuer_address]",
+              "type": "ed25519_public_key"
+            }
+          ],
+          "data": {}
+        }
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:23 GMT
+- request:
+    method: post
+    uri: https://horizon-testnet.stellar.bloomx.org/transactions
+    body:
+      encoding: UTF-8
+      string: tx=AAAAAL5O2OPfel9HrhTvx%2Bh%2Bwbh3HalTsmLF0VPkaHT53sNVAAAAZAAALKEAAAApAAAAAAAAAAEAAAAER0ZYTgAAAAEAAAABAAAAAL5O2OPfel9HrhTvx%2Bh%2Bwbh3HalTsmLF0VPkaHT53sNVAAAAAQAAAAA%2Flw93Cl%2FGkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCWDgAAAAAAL5O2OPfel9HrhTvx%2Bh%2Bwbh3HalTsmLF0VPkaHT53sNVAAAAAAvrwgAAAAAAAAAAAfnew1UAAABAmnuvpWDh72ma0zHTP8CFIqJStUgQuzxowjUh3vxoGZdFcxyBCPqDvrwK2kDpIEZObyJcm4VDZhL0KDyJi8XGDQ%3D%3D
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept:
+      - application/hal+json,application/problem+json,application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0
+      Content-Disposition:
+      - inline
+      Content-Type:
+      - application/hal+json; charset=utf-8
+      Date:
+      - Thu, 28 Feb 2019 11:02:30 GMT
+      Vary:
+      - Origin
+      X-Ratelimit-Limit:
+      - '1576000'
+      X-Ratelimit-Remaining:
+      - '1575997'
+      X-Ratelimit-Reset:
+      - '3597'
+      Content-Length:
+      - '1373'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "_links": {
+            "transaction": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/transactions/9ed21a7a424205e9a4c651ddfa18d1320a8b4a83e4320a64f92684f8d571c8b4"
+            }
+          },
+          "hash": "9ed21a7a424205e9a4c651ddfa18d1320a8b4a83e4320a64f92684f8d571c8b4",
+          "ledger": 17605,
+          "envelope_xdr": "AAAAAL5O2OPfel9HrhTvx+h+wbh3HalTsmLF0VPkaHT53sNVAAAAZAAALKEAAAApAAAAAAAAAAEAAAAER0ZYTgAAAAEAAAABAAAAAL5O2OPfel9HrhTvx+h+wbh3HalTsmLF0VPkaHT53sNVAAAAAQAAAAA/lw93Cl/GkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCWDgAAAAAAL5O2OPfel9HrhTvx+h+wbh3HalTsmLF0VPkaHT53sNVAAAAAAvrwgAAAAAAAAAAAfnew1UAAABAmnuvpWDh72ma0zHTP8CFIqJStUgQuzxowjUh3vxoGZdFcxyBCPqDvrwK2kDpIEZObyJcm4VDZhL0KDyJi8XGDQ==",
+          "result_xdr": "AAAAAAAAAGQAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAA=",
+          "result_meta_xdr": "AAAAAQAAAAIAAAADAABExQAAAAAAAAAAvk7Y4996X0euFO/H6H7BuHcdqVOyYsXRU+RodPnew1UAAAAXSHbX/AAALKEAAAAoAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAABAABExQAAAAAAAAAAvk7Y4996X0euFO/H6H7BuHcdqVOyYsXRU+RodPnew1UAAAAXSHbX/AAALKEAAAApAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAMAAEKFAAAAAQAAAAA/lw93Cl/GkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCWDgAAAAAAL5O2OPfel9HrhTvx+h+wbh3HalTsmLF0VPkaHT53sNVAAAbShVd0gB//////////wAAAAEAAAAAAAAAAAAAAAEAAETFAAAAAQAAAAA/lw93Cl/GkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCWDgAAAAAAL5O2OPfel9HrhTvx+h+wbh3HalTsmLF0VPkaHT53sNVAAAbSiFJlAB//////////wAAAAEAAAAAAAAAAA=="
+        }
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:30 GMT
+- request:
+    method: get
+    uri: https://horizon-testnet.stellar.bloomx.org/accounts/[bloomx_issuer_address]
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept:
+      - application/hal+json,application/problem+json,application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0
+      Content-Disposition:
+      - inline
+      Content-Type:
+      - application/hal+json; charset=utf-8
+      Date:
+      - Thu, 28 Feb 2019 11:02:31 GMT
+      Vary:
+      - Origin
+      X-Ratelimit-Limit:
+      - '1576000'
+      X-Ratelimit-Remaining:
+      - '1575996'
+      X-Ratelimit-Reset:
+      - '3590'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "_links": {
+            "self": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]"
+            },
+            "transactions": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/transactions{?cursor,limit,order}",
+              "templated": true
+            },
+            "operations": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/operations{?cursor,limit,order}",
+              "templated": true
+            },
+            "payments": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/payments{?cursor,limit,order}",
+              "templated": true
+            },
+            "effects": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/effects{?cursor,limit,order}",
+              "templated": true
+            },
+            "offers": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/offers{?cursor,limit,order}",
+              "templated": true
+            },
+            "trades": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/trades{?cursor,limit,order}",
+              "templated": true
+            },
+            "data": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/accounts/[bloomx_issuer_address]/data/{key}",
+              "templated": true
+            }
+          },
+          "id": "[bloomx_issuer_address]",
+          "paging_token": "",
+          "account_id": "[bloomx_issuer_address]",
+          "sequence": "49061411422240",
+          "subentry_count": 1,
+          "thresholds": {
+            "low_threshold": 0,
+            "med_threshold": 0,
+            "high_threshold": 0
+          },
+          "flags": {
+            "auth_required": false,
+            "auth_revocable": false
+          },
+          "balances": [
+            {
+              "balance": "2000000.0000000",
+              "limit": "922337203685.4775807",
+              "buying_liabilities": "0.0000000",
+              "selling_liabilities": "0.0000000",
+              "asset_type": "credit_alphanum4",
+              "asset_code": "BTCT",
+              "asset_issuer": "[bloom_trade_address]"
+            },
+            {
+              "balance": "9999.9996800",
+              "buying_liabilities": "0.0000000",
+              "selling_liabilities": "0.0000000",
+              "asset_type": "native"
+            }
+          ],
+          "signers": [
+            {
+              "public_key": "[bloomx_issuer_address]",
+              "weight": 1,
+              "key": "[bloomx_issuer_address]",
+              "type": "ed25519_public_key"
+            }
+          ],
+          "data": {}
+        }
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:32 GMT
+- request:
+    method: post
+    uri: https://horizon-testnet.stellar.bloomx.org/transactions
+    body:
+      encoding: UTF-8
+      string: tx=AAAAAOXkO9iJqIHCQtK%2FxOInblvWhvAdV9jOFzuSngD8fAC4AAAAZAAALJ8AAAAhAAAAAAAAAAEAAAAER0ZYTgAAAAEAAAABAAAAAOXkO9iJqIHCQtK%2FxOInblvWhvAdV9jOFzuSngD8fAC4AAAAAQAAAAA%2Flw93Cl%2FGkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCVENUAAAAAOXkO9iJqIHCQtK%2FxOInblvWhvAdV9jOFzuSngD8fAC4AAAAAAAAJxAAAAAAAAAAAfx8ALgAAABAhtK4EiFQn0Q8Vw39tqR2ChF2duL3%2B1Ho9N8UMzYNCv8ttN4L78Vs8Wvt3LhGYY2NM%2Fcl4sQXMnbPnJYF9ZDdCw%3D%3D
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept:
+      - application/hal+json,application/problem+json,application/json
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, max-age=0
+      Content-Disposition:
+      - inline
+      Content-Type:
+      - application/hal+json; charset=utf-8
+      Date:
+      - Thu, 28 Feb 2019 11:02:35 GMT
+      Vary:
+      - Origin
+      X-Ratelimit-Limit:
+      - '1576000'
+      X-Ratelimit-Remaining:
+      - '1575995'
+      X-Ratelimit-Reset:
+      - '3589'
+      Content-Length:
+      - '1373'
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "_links": {
+            "transaction": {
+              "href": "https://horizon-testnet.stellar.bloomx.org:443/transactions/18fdb17f10829f8c84f019149b07edca9f18957f73cb4893e19f4f23eef89b9c"
+            }
+          },
+          "hash": "18fdb17f10829f8c84f019149b07edca9f18957f73cb4893e19f4f23eef89b9c",
+          "ledger": 17606,
+          "envelope_xdr": "AAAAAOXkO9iJqIHCQtK/xOInblvWhvAdV9jOFzuSngD8fAC4AAAAZAAALJ8AAAAhAAAAAAAAAAEAAAAER0ZYTgAAAAEAAAABAAAAAOXkO9iJqIHCQtK/xOInblvWhvAdV9jOFzuSngD8fAC4AAAAAQAAAAA/lw93Cl/GkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCVENUAAAAAOXkO9iJqIHCQtK/xOInblvWhvAdV9jOFzuSngD8fAC4AAAAAAAAJxAAAAAAAAAAAfx8ALgAAABAhtK4EiFQn0Q8Vw39tqR2ChF2duL3+1Ho9N8UMzYNCv8ttN4L78Vs8Wvt3LhGYY2NM/cl4sQXMnbPnJYF9ZDdCw==",
+          "result_xdr": "AAAAAAAAAGQAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAA=",
+          "result_meta_xdr": "AAAAAQAAAAIAAAADAABExgAAAAAAAAAA5eQ72ImogcJC0r/E4iduW9aG8B1X2M4XO5KeAPx8ALgAAAAXSHbbHAAALJ8AAAAgAAAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAABAABExgAAAAAAAAAA5eQ72ImogcJC0r/E4iduW9aG8B1X2M4XO5KeAPx8ALgAAAAXSHbbHAAALJ8AAAAhAAAAAQAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAABAAAAAgAAAAMAAD6uAAAAAQAAAAA/lw93Cl/GkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCVENUAAAAAOXkO9iJqIHCQtK/xOInblvWhvAdV9jOFzuSngD8fAC4AAAJGE511FB//////////wAAAAEAAAAAAAAAAAAAAAEAAETGAAAAAQAAAAA/lw93Cl/GkoBuIwY6E5vDdRhcWwIwtU2RkdSZWSjMwAAAAAFCVENUAAAAAOXkO9iJqIHCQtK/xOInblvWhvAdV9jOFzuSngD8fAC4AAAJGE51+2B//////////wAAAAEAAAAAAAAAAA=="
+        }
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:35 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Length:
+      - '34'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Cloud-Trace-Context:
+      - 462edc4875354685ca8accd85308255e;o=0
+      X-Request-Id:
+      - 53688e25-6714-49c3-8913-1780406cf1da
+      X-Runtime:
+      - '0.061237'
+      Date:
+      - Thu, 28 Feb 2019 11:02:35 GMT
+    body:
+      encoding: UTF-8
+      string: '{"status":404,"error":"Not Found"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:36 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Length:
+      - '34'
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Cloud-Trace-Context:
+      - c884e662685e44a5cd8ae9e9c8201449;o=1
+      X-Request-Id:
+      - 2339edf4-eef2-45f6-8775-9ca671378b2b
+      X-Runtime:
+      - '0.063405'
+      Date:
+      - Thu, 28 Feb 2019 11:02:37 GMT
+    body:
+      encoding: UTF-8
+      string: '{"status":404,"error":"Not Found"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:37 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2023c2cf2ccc5ea79568afab374a84c8"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - b5b87764c9ab419ccb07e0af1345073c;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 6ed68807-8e6c-4756-8f6e-84e5f2c8e223
+      X-Runtime:
+      - '0.021011'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:38 GMT
+      Content-Length:
+      - '197'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.0","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:38 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2023c2cf2ccc5ea79568afab374a84c8"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - cd2d35bcb7df4be78dfc772d6e867d68;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 26e332a3-73aa-4d29-bf9d-c2c2e3cf8db4
+      X-Runtime:
+      - '0.021120'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:39 GMT
+      Content-Length:
+      - '197'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.0","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:40 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2023c2cf2ccc5ea79568afab374a84c8"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 127de445b79e4be98890c04be2cf2881;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 3ba744fc-4b3b-4271-88ff-0464013513e5
+      X-Runtime:
+      - '0.020008'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:41 GMT
+      Content-Length:
+      - '197'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.0","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:41 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2023c2cf2ccc5ea79568afab374a84c8"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 698296e59828491f82bf9b2d3168266e;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - c7d220f1-8bb9-4599-9c57-c682fc302275
+      X-Runtime:
+      - '0.019401'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:42 GMT
+      Content-Length:
+      - '197'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.0","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:42 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2023c2cf2ccc5ea79568afab374a84c8"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - eb389588fc364f2bc3a760391905deb6;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - d2933e8d-0021-4a6e-9e0e-ede76b2f66b3
+      X-Runtime:
+      - '0.055340'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:43 GMT
+      Content-Length:
+      - '197'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.0","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:43 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"2023c2cf2ccc5ea79568afab374a84c8"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 7f4fcd148365404c8d4586906bede6b7;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 782b0277-f4b4-4778-9f1c-893104f004cd
+      X-Runtime:
+      - '0.081235'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:45 GMT
+      Content-Length:
+      - '197'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.0","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:45 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"663201e1571f6391c5e4dbafa13f6477"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 36ea068287184fac873bef448ad3f961;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - c362e189-7866-4a6a-a1c3-e1f5f376b804
+      X-Runtime:
+      - '0.020968'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:46 GMT
+      Content-Length:
+      - '199'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"1.5","outgoing_amount":"293302.29","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.001","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:46 GMT
+- request:
+    method: put
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN/complete
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 501f9d8913114711c0b62d798c90341c;o=1
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - ce59a3cb-e393-44f9-99d3-f1b909c3b633
+      X-Runtime:
+      - '0.057164'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:46 GMT
+      Content-Length:
+      - '2'
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:46 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"930e5a2b6757400e09b6ca9b4a4ff5f3"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 7f5a829c703342dac304a0c7fd8d8a09;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - fa79d48a-e73d-4788-8bd8-c8ec67379793
+      X-Runtime:
+      - '0.020180'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:46 GMT
+      Content-Length:
+      - '215'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"0.001","outgoing_amount":"195.5348617984523905968","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.001","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:46 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"930e5a2b6757400e09b6ca9b4a4ff5f3"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 54bac7a9a978437f85d0a22111178f35;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 79580a20-da0d-41c6-96b2-67c5c27ca858
+      X-Runtime:
+      - '0.018926'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:48 GMT
+      Content-Length:
+      - '215'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"0.001","outgoing_amount":"195.5348617984523905968","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.001","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:48 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"930e5a2b6757400e09b6ca9b4a4ff5f3"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 0b4c2764e4e344c483a3eecc66829445;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - b58244d8-3a1b-4f3b-bbb4-67e3ab2c263d
+      X-Runtime:
+      - '0.095909'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:49 GMT
+      Content-Length:
+      - '215'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"0.001","outgoing_amount":"195.5348617984523905968","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.001","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:49 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"930e5a2b6757400e09b6ca9b4a4ff5f3"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 49fad3ba6b2f476ac655140e02d2b3c4;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - ae1c732e-90ac-4775-8982-655f1003d09f
+      X-Runtime:
+      - '0.019665'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:50 GMT
+      Content-Length:
+      - '215'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"0.001","outgoing_amount":"195.5348617984523905968","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.001","status":"processing"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:50 GMT
+- request:
+    method: get
+    uri: https://trade-staging.bloom.solutions/api/v2/orders/GFXN
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"4db2d3aeb381dd897eb709fb509d320a"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 6583d9d26b7842d589709469388e212e;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 26fd19cd-5bca-4e00-8fc4-ed42e4f17c5a
+      X-Runtime:
+      - '0.019803'
+      X-Xss-Protection:
+      - 1; mode=block
+      Date:
+      - Thu, 28 Feb 2019 11:02:51 GMT
+      Content-Length:
+      - '214'
+    body:
+      encoding: UTF-8
+      string: '{"incoming_amount":"0.001","outgoing_amount":"195.5348617984523905968","outgoing_currency_slug":"PHP","incoming_currency_slug":"BTC","price":"195534.8617984523905968","received_amount":"0.001","status":"completed"}'
+    http_version: 
+  recorded_at: Thu, 28 Feb 2019 11:02:51 GMT
+recorded_with: VCR 4.0.0
