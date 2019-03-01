@@ -9,6 +9,7 @@ module BloomTradeClient
     attribute :incoming_currency_slug, String
     attribute :price, BigDecimal
     attribute :received_amount, BigDecimal
+    attribute :payable_amount, BigDecimal
     attribute :status, String
 
   end
