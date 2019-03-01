@@ -79,6 +79,7 @@ RSpec.describe "Get order" do
     expect(order.incoming_currency_slug).to eq "BTC"
     expect(order.price.to_f).to be > 0
     expect(order.received_amount.to_f).to eq 0.001
+    expect(order.payable_amount.to_f).to eq (0.001 * order.price).floor(2)
     expect(order.status).to eq "processing"
   end
 
