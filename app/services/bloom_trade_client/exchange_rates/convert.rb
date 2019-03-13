@@ -38,7 +38,17 @@ module BloomTradeClient
         )
 
         if exchange_rate
-          raise BloomTradeClient::ExpiredRateError if exchange_rate.expired?
+          if exchange_rate.expired?
+            raise(
+              BloomTradeClient::ExpiredRateError,
+              BloomTradeClient::ExpiredRateError.message_from(
+                base_currency, 
+                counter_currency, 
+                exchange_rate.expires_at
+              )
+            )
+          end
+
           return ConversionResult.new(
             rate: exchange_rate.send(type.to_sym),
             expires_at: exchange_rate.expires_at
@@ -52,7 +62,17 @@ module BloomTradeClient
         )
 
         if reversed_rate
-          raise BloomTradeClient::ExpiredRateError if reversed_rate.expired?
+          if reversed_rate.expired?
+            raise(
+              BloomTradeClient::ExpiredRateError,
+              BloomTradeClient::ExpiredRateError.message_from(
+                counter_currency, 
+                base_currency, 
+                reversed_rate.expires_at
+              )
+            )
+          end
+
           return ConversionResult.new(
             rate: 1.0 / reversed_rate.send(type.to_sym),
             expires_at: reversed_rate.expires_at
