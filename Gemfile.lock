@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (2.2.0)
+    bloom_trade_client-rails (2.3.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
