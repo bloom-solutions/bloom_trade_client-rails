@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased] - 2019-04-23
+### Changed
+- Change rails dependenncy to include rails 5.x versions
+
 ## [2.3.0] - 2019-03-13
 ### Changed
 - Include `expiry_time` and `currency_pair` when ExpiredRateError is raised.
