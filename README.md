@@ -98,6 +98,15 @@ response = client.update_quote(
 This so that Bloom Trade can issue the corresponding base/counter currency (based on quote type)
 to fulfill the quote.
 
+### Syncing exchange rates (manually)
+
+Sometimes you would want to run the sync job manually for testing purposes, here's how to do it:
+
+1. Make sure that your sidekiq worker is up and running, the job runs other asynchronous jobs.
+2. Open the rails console and call `BloomTradeClient::ExchangeRates::SyncJob.new.perform`.
+
+### Getting conversion and direct rates from a currency pair
+
 Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
 from either `["buy", "sell", "mid"]`. Mid is the average value. If the rate has
 expired, this method will raise `BloomTradeClient::ExpiredRateError`.
