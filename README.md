@@ -113,6 +113,15 @@ See `spec/acceptance` to see more examples of calls that can be made with `Bloom
 
 Copy the config and customize it (especially if you're re-recording cassettes): `cp spec/config.yml{.sample,}`
 
+## Releasing
+
+The gem is hosted in gemfury under the Bloom Solutions account. The gem itself is public, to make a version and release it to the public you add the `fury` git origin:
+
+```
+git remote add fury https://git.fury.io/bloomsolutions/bloom_trade_client-rails.git
+git push fury master
+```
+
 ## Contributing
 Contribution directions go here.
 
