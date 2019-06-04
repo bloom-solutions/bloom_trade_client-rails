@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (2.4.1)
+    bloom_trade_client-rails (2.5.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
@@ -276,4 +276,4 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 BUNDLED WITH
-   1.16.6
+   1.17.3

@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic
 Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2019-06-04
+### Added
+- Factory `:bloom_trade_client_conversion_result` for `BloomTradeClient::ConversionResult`
+
 ## [2.4.1] - 2019-04-23
 ### Removed
 - Remove unused js and css assets
