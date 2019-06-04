@@ -1,15 +1,7 @@
-GIT
-  remote: https://github.com/bloom-solutions/message_bus-client
-  revision: 6751d1794bdf62932d7eb2048a6362288e69e808
-  ref: bloom_changes
-  specs:
-    message_bus-client (0.1.0)
-      excon (~> 0.45)
-
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (2.4.1)
+    bloom_trade_client-rails (2.5.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
@@ -274,7 +266,6 @@ DEPENDENCIES
   bloom_trade_client-rails!
   factory_bot_rails (~> 4.11)
   fakeredis
-  message_bus-client!
   pry
   rspec-rails (~> 3.8)
   rspec-sidekiq
@@ -285,4 +276,4 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 BUNDLED WITH
-   1.16.6
+   1.17.3
