@@ -5,12 +5,11 @@ module BloomTradeClient
 
     STATES = {
       valid: "valid",
-      expired: "expired",
       invalid: "invalid",
     }
 
     attribute :rate, BigDecimal
-    attribute :state, String
+    attribute :state, String, default: :default_state
     attribute :message, String
     attribute :request, ConvertRequest
     attribute :expires_at, DateTime
@@ -25,6 +24,12 @@ module BloomTradeClient
       define_method("#{key.to_s}?".to_sym) do
         state == STATES[key.to_sym]
       end
+    end
+
+    private
+
+    def default_state
+      "valid"
     end
 
   end
