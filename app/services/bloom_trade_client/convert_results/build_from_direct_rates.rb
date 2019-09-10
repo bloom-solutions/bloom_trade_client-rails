@@ -15,22 +15,18 @@ module BloomTradeClient
 
         rate = resolution[:rate]
 
-        state = if rate.expired?
-                  ConvertResult::STATES[:expired]
-                else
-                  ConvertResult::STATES[:valid]
-                end
-
-        calculated_rate = if resolution[:direction] == "direct"
+        calculated_rate = if resolution[:orientation] == "direct"
                             rate.send(request_type.to_sym)
                           else
                             1.0 / rate.send(request_type.to_sym)
                           end
 
+        time = Time.at(rate.expires_at).utc
+
         ConvertResult.new(
-          state: state,
           rate: calculated_rate,
-          expires_at: rate.expires_at,
+          expires_at: DateTime.parse(time.to_s),
+          request: request,
         )
       end
 

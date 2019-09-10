@@ -1,13 +1,13 @@
 module BloomTradeClient
   class ExchangeRate < ApplicationRecord
 
-    RESOLVER_DIRECTIONS = {
+    RESOLVER_ORIENTATIONS = {
       direct: "direct",
       reversed: "reversed",
-    }
+    }.freeze
 
     def expired?
-      return true unless expires_at
+      return false unless expires_at
 
       expires_at_in_utc = Time.at(expires_at).utc
       expires_at_in_utc < Time.now.utc
@@ -25,7 +25,7 @@ module BloomTradeClient
 
       if direct_rate
         resolution[:rate] = direct_rate
-        resolution[:direction] = RESOLVER_DIRECTIONS[:direct]
+        resolution[:orientation] = RESOLVER_ORIENTATIONS[:direct]
       end
 
       reversed_rate = find_by(
@@ -36,7 +36,7 @@ module BloomTradeClient
 
       if reversed_rate
         resolution[:rate] = reversed_rate
-        resolution[:direction] = RESOLVER_DIRECTIONS[:reversed]
+        resolution[:orientation] = RESOLVER_ORIENTATIONS[:reversed]
       end
 
       resolution

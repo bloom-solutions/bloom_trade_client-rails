@@ -10,7 +10,6 @@ module BloomTradeClient
 
       result = ConvertResults::BuildFromReserveRates.(request)
       return result if result.present?
-      #
       # BuildInvalid.(request)
     end
 
