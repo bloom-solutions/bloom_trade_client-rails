@@ -29,53 +29,36 @@ module BloomTradeClient
         return nil unless %w(buy sell mid).include? type
         return ConvertResult.new(rate: 1.0) if base_currency == counter_currency
 
-        jwt_hash = jwt ? Digest::SHA256.base64digest(jwt) : nil
-
-        exchange_rate = ExchangeRate.find_by(
+        resolution = ExchangeRate.resolve(
           base_currency: base_currency,
           counter_currency: counter_currency,
-          jwt_hash: jwt_hash
+          jwt: jwt,
         )
 
-        if exchange_rate
-          if exchange_rate.expired?
-            raise(
-              BloomTradeClient::ExpiredRateError,
-              BloomTradeClient::ExpiredRateError.message_from(
-                base_currency, 
-                counter_currency, 
-                exchange_rate.expires_at
-              )
-            )
-          end
+        return unless resolution[:rate]
 
-          return ConvertResult.new(
-            rate: exchange_rate.send(type.to_sym),
-            expires_at: exchange_rate.expires_at
+        rate = resolution[:rate]
+
+        if rate.expired?
+          raise(
+            BloomTradeClient::ExpiredRateError,
+            BloomTradeClient::ExpiredRateError.message_from(
+              rate.base_currency,
+              rate.counter_currency,
+              rate.expires_at,
+            )
           )
         end
 
-        reversed_rate = ExchangeRate.find_by(
-          base_currency: counter_currency,
-          counter_currency: base_currency,
-          jwt_hash: jwt_hash
-        )
-
-        if reversed_rate
-          if reversed_rate.expired?
-            raise(
-              BloomTradeClient::ExpiredRateError,
-              BloomTradeClient::ExpiredRateError.message_from(
-                counter_currency, 
-                base_currency, 
-                reversed_rate.expires_at
-              )
-            )
-          end
-
+        if resolution[:direction] == "direct"
           return ConvertResult.new(
-            rate: 1.0 / reversed_rate.send(type.to_sym),
-            expires_at: reversed_rate.expires_at
+            rate: rate.send(type.to_sym),
+            expires_at: rate.expires_at,
+          )
+        else
+          return ConvertResult.new(
+            rate: 1.0 / rate.send(type.to_sym),
+            expires_at: rate.expires_at,
           )
         end
       end
