@@ -1,8 +1,10 @@
-ENV['RAILS_ENV'] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 
-require File.expand_path('../dummy/config/environment', __FILE__)
+require File.expand_path("../dummy/config/environment", __FILE__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+if Rails.env.production?
+  abort("The Rails environment is running in production mode!")
+end
 
 require "fakeredis"
 require "pry"
@@ -10,10 +12,11 @@ require "rspec/rails"
 require "rspec-sidekiq"
 require "stellar-sdk"
 require "wait"
+require "timecop"
 require "webmock/rspec"
 require "virtus/matchers/rspec"
 
-Dir[BloomTradeClient::Engine.root.join('spec/support/**/*.rb')].each do |f|
+Dir[BloomTradeClient::Engine.root.join("spec/support/**/*.rb")].each do |f|
   require f
 end
 
@@ -29,13 +32,9 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
   config.use_transactional_fixtures = true
-
   config.infer_spec_type_from_file_location!
-
   config.filter_rails_from_backtrace!
-
   config.before :each do |c|
     Sidekiq::Testing.inline!
   end
