@@ -25,7 +25,7 @@ module BloomTradeClient
   end
 
   def self.convert!(base_currency:, counter_currency:, type:, jwt: nil)
-    BloomTradeClient::ExchangeRates::Convert.(
+    BloomTradeClient::Convert.(
       base_currency: base_currency,
       counter_currency: counter_currency,
       type: type,
