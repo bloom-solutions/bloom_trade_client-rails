@@ -46,7 +46,7 @@ module BloomTradeClient
                 counter_currency: "USD",
                 jwt: nil
               )
-            }.to raise_error(BloomTradeClient::ExpiredRateError)
+            }.to raise_error(ExpiredRateError)
           end
         end
 
@@ -64,7 +64,7 @@ module BloomTradeClient
               jwt: nil
             )
 
-            expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
+            expect(resulting_rate).to be_a ConvertResult
             expect(resulting_rate.rate).to eq 1 / 50.0
           end
 
@@ -82,7 +82,7 @@ module BloomTradeClient
                 counter_currency: "PHP",
                 jwt: nil
               )
-            }.to raise_error(BloomTradeClient::ExpiredRateError)
+            }.to raise_error(ExpiredRateError)
           end
         end
 
@@ -194,7 +194,7 @@ module BloomTradeClient
             jwt: nil
           )
 
-          expect(resulting_rate).to be_a BloomTradeClient::ConversionResult
+          expect(resulting_rate).to be_a ConvertResult
           expect(resulting_rate.rate).to eq 50.0
           expect(resulting_rate.expires_at).to_not be_nil
         end

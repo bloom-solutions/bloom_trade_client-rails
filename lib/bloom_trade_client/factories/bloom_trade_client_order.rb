@@ -4,7 +4,7 @@ FactoryBot.define do
     outgoing_amount { 182.45 }
     outgoing_currency_slug { "PHP" }
     incoming_currency_slug { "BTC" }
-    price { 182448.35139997214425 }
+    price { 182_448.35 }
     received_amount { 0.001 }
     status { "completed" }
   end

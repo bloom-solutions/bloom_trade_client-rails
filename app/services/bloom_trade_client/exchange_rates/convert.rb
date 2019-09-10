@@ -15,19 +15,19 @@ module BloomTradeClient
         origin_rate = direct_rate(type, base_currency, reserve_currency, jwt)
         destination_rate = direct_rate(type, reserve_currency, counter_currency, jwt)
         reverse_rate = origin_rate.rate * destination_rate.rate if origin_rate && destination_rate
-        return ConversionResult.new(rate: reverse_rate) if reverse_rate
+        return ConvertResult.new(rate: reverse_rate) if reverse_rate
 
         Rails.logger.error(
           "Unable to calculate rate #{base_currency}#{counter_currency}"
         )
-        return ConversionResult.new(rate: 0.0)
+        return ConvertResult.new(rate: 0.0)
       end
 
       private
 
       def self.direct_rate(type, base_currency, counter_currency, jwt)
         return nil unless %w(buy sell mid).include? type
-        return ConversionResult.new(rate: 1.0) if base_currency == counter_currency
+        return ConvertResult.new(rate: 1.0) if base_currency == counter_currency
 
         jwt_hash = jwt ? Digest::SHA256.base64digest(jwt) : nil
 
@@ -49,7 +49,7 @@ module BloomTradeClient
             )
           end
 
-          return ConversionResult.new(
+          return ConvertResult.new(
             rate: exchange_rate.send(type.to_sym),
             expires_at: exchange_rate.expires_at
           )
@@ -73,7 +73,7 @@ module BloomTradeClient
             )
           end
 
-          return ConversionResult.new(
+          return ConvertResult.new(
             rate: 1.0 / reversed_rate.send(type.to_sym),
             expires_at: reversed_rate.expires_at
           )
