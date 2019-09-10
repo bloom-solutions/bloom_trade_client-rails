@@ -5,17 +5,30 @@ module BloomTradeClient
 
     describe ".call" do
       context "base and counter_currency are the same" do
+        let(:request) do
+          build(:bloom_trade_client_convert_request, {
+            base_currency: "USD",
+            counter_currency: "USD",
+          })
+        end
+
         it "returns 1.0" do
-          resulting_rate = described_class.(
-            base_currency: "PHP",
-            counter_currency: "PHP",
-            jwt: nil
-          )
+          resulting_rate = described_class.(request)
           expect(resulting_rate.rate).to eq 1.0
+          expect(resulting_rate.state).to eq "valid"
+          expect(resulting_rate.expires_at).to be_nil
         end
       end
 
       context "direct_rate exists" do
+        let(:request) do
+          build(:bloom_trade_client_convert_request, {
+            base_currency: "PHP",
+            counter_currency: "USD",
+            jwt: nil,
+          })
+        end
+
         it "calculates using the direct rate" do
           create(:bloom_trade_client_exchange_rate, {
             base_currency: "PHP",
@@ -23,11 +36,7 @@ module BloomTradeClient
             mid: 50.0,
           })
 
-          resulting_rate = described_class.(
-            base_currency: "PHP",
-            counter_currency: "USD",
-            jwt: nil
-          )
+          resulting_rate = described_class.(request)
           expect(resulting_rate.rate).to eq 50.0
         end
 
