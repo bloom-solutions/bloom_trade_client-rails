@@ -23,6 +23,8 @@ module BloomTradeClient
       end
 
       def self.origin_resolution_from(request)
+        return {} if request.base_currency == request.reserve_currency
+
         ExchangeRate.resolve(
           base_currency: request.base_currency,
           counter_currency: request.reserve_currency,
@@ -32,6 +34,8 @@ module BloomTradeClient
       private_class_method :origin_resolution_from
 
       def self.dest_resolution_from(request)
+        return {} if request.counter_currency == request.reserve_currency
+
         ExchangeRate.resolve(
           base_currency: request.reserve_currency,
           counter_currency: request.counter_currency,
