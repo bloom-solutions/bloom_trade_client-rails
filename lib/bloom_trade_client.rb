@@ -23,12 +23,15 @@ module BloomTradeClient
     has :jwt_callback, classes: Object
   end
 
-  def self.convert!(base_currency:, counter_currency:, type:, jwt: nil)
-    BloomTradeClient::Convert.(
+  def self.convert(base_currency:, counter_currency:, type:, jwt: nil)
+    request = BloomTradeClient::ConvertRequest.new(
       base_currency: base_currency,
       counter_currency: counter_currency,
-      type: type,
-      jwt: jwt
+      request_type: type,
+      jwt: jwt,
     )
+    request.validate
+
+    BloomTradeClient::Convert.(request)
   end
 end

@@ -1,7 +1,5 @@
 require "spec_helper"
 
-class SomeCallback; end
-
 RSpec.describe BloomTradeClient do
   let(:callback) { -> {} }
 
@@ -17,15 +15,24 @@ RSpec.describe BloomTradeClient do
     expect(described_class.configuration.jwt_callback).to eq callback
   end
 
-  describe ".convert!" do
-    it "calls the BloomTradeClient::ExchangeRates::Convert#call" do
-      expect(BloomTradeClient::Convert).to receive(:call)
+  describe ".convert" do
+    let(:request) { double(BloomTradeClient::ConvertRequest) }
 
-      BloomTradeClient.convert!(
+    it "calls the BloomTradeClient::ExchangeRates::Convert#call" do
+      expect(BloomTradeClient::ConvertRequest).to receive(:new).with(
         base_currency: "BTC",
-        counter_currency: "PHP",
-        type: "buy",
-        jwt: nil
+        counter_currency: "USD",
+        request_type: "sell",
+        jwt: "my-jwt",
+      ).and_return(request)
+      expect(request).to receive(:validate).and_return(nil)
+      expect(BloomTradeClient::Convert).to receive(:call).with(request)
+
+      BloomTradeClient.convert(
+        base_currency: "BTC",
+        counter_currency: "USD",
+        type: "sell",
+        jwt: "my-jwt",
       )
     end
   end
