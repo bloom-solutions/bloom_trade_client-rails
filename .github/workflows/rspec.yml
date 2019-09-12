@@ -1,0 +1,28 @@
+name: RSpec
+on: 
+  push:
+    pull_request:
+      branches:
+        - master
+jobs:
+  test:
+    name: Run RSpec
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup System
+        run: |
+          sudo apt-get install libsqlite3-dev
+      - name: Set up Ruby 2.6
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.3
+      - name: Bundler
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: RSpec
+        run: |
+          bundle exec rails db:migrate RAILS_ENV=test
+          cp spec/config.yml{.sample,}
+          bundle exec rspec spec
