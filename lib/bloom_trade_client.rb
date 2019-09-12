@@ -1,25 +1,24 @@
 require "addressable"
-require 'api_client_base'
-require 'light-service'
+require "api_client_base"
+require "light-service"
 require "message_bus_client_worker"
-require 'virtus'
+require "virtus"
 
-require 'bloom_trade_client/engine'
-require 'bloom_trade_client/client'
+require "bloom_trade_client/engine"
+require "bloom_trade_client/client"
 
 module BloomTradeClient
-
   include APIClientBase::Base.module
 
-  RATES_CHANNEL     = '/exchange_rates'.freeze
-  ORG_RATES_CHANNEL = '/org_exchange_rates'.freeze
+  RATES_CHANNEL     = "/exchange_rates".freeze
+  ORG_RATES_CHANNEL = "/org_exchange_rates".freeze
 
   with_configuration do
     has(:host, {
       classes: String,
-      default: 'https://trade-staging.bloom.solutions',
+      default: "https://trade-staging.bloom.solutions",
     })
-    has :reserve_currency, classes: String, default: 'PHP'
+    has :reserve_currency, classes: String, default: "PHP"
     has :jwt_callback, classes: Object
   end
 

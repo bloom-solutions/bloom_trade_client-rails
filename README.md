@@ -1,6 +1,6 @@
 # BloomTradeClient
 
-[![Build Status](https://travis-ci.org/bloom-solutions/bloom_trade_client-rails.svg?branch=master)](https://travis-ci.org/bloom-solutions/bloom_trade_client-rails)
+![](https://github.com/bloom-solutions/bloom_trade_client-rails/workflows/RSpec/badge.svg)
 
 Mountable Exchange Rates client for market data coming from Bloom Trade
 
@@ -11,17 +11,19 @@ Mountable Exchange Rates client for market data coming from Bloom Trade
 This uses [Sidekiq](https://github.com/mperham/sidekiq) and [sidekiq-cron](https://github.com/ondrejbartas/sidekiq-cron) to fetch messages from the rates server.
 
 1. Add this line to your application's Gemfile:
+
 ```ruby
 gem 'bloom_trade_client-rails'
 ```
 
 2. Copy needed migrations
+
 ```bash
 rails bloom_trade_client:install:migrations
 ```
 
-3. Enable the BloomTradeClient engine by mounting in your routes
-In your `config/routes.rb`
+3. Enable the BloomTradeClient engine by mounting in your routes. In your `config/routes.rb`:
+
 ```ruby
 mount BloomTradeClient::Engine => "/bloom_trade_client"
 ```
@@ -30,10 +32,12 @@ mount BloomTradeClient::Engine => "/bloom_trade_client"
 
 ```ruby
 BloomTradeClient.configure do |c|
-  c.host = "https://staging.trade.bloom.solutions"
+  c.host = "https://trade-staging.bloom.solutions"
   c.reserve_currency = "PHP" # What the conversion service will use
-  c.jwt_callback = -> { ["my_token", "his_token", "her_token"] } # Returns a
-list of jwt
+
+  # Returns a list of jwt, this will be used for creating and maintaining
+  # a different set of local ExchangeRate records per JWT.
+  c.jwt_callback = -> { ["my_token", "his_token", "her_token"] }
 end
 ```
 
@@ -52,7 +56,7 @@ If you're new to sidekiq-cron, see the [docs](https://github.com/ondrejbartas/si
 #### Requesting a Quote from Bloom Trade
 
 ```ruby
-client = BloomTradeClient::Client.new(token: "your-api-token-here")
+client = BloomTradeClient::Client.new(token: "your-jwt-here")
 response = client.get_quote(
   base_currency: "BTC",
   counter_currency: "PHP",
@@ -98,22 +102,57 @@ response = client.update_quote(
 This so that Bloom Trade can issue the corresponding base/counter currency (based on quote type)
 to fulfill the quote.
 
-### Syncing exchange rates (manually)
+## Exchange Rates
+
+#### Syncing exchange rates (manually)
 
 Sometimes you would want to run the sync job manually for testing purposes, here's how to do it:
 
 1. Make sure that your sidekiq worker is up and running, the job runs other asynchronous jobs.
 2. Open the rails console and call `BloomTradeClient::ExchangeRates::SyncJob.new.perform`.
 
-### Getting conversion and direct rates from a currency pair
+#### Getting conversion and direct rates from a currency pair
 
-Checking the value of a currency to another e.g. 1 BTC for USD. You can choose
-from either `["buy", "sell", "mid"]`. Mid is the average value. If the rate has
-expired, this method will raise `BloomTradeClient::ExpiredRateError`.
+Checking the value of a currency to another e.g. 1 BTC for USD. You can choose from either `buy, sell, mid`. Mid is the average value.
+
+The result object is a `ConvertResult` object:
+
 ```ruby
-result = BloomTradeClient.convert!(
-  base_currency: "BTC", counter_currency: "USD", type: "buy"
+# If you pass a type other than buy, mid or sell. This will raise an ArgumentError
+result = BloomTradeClient.convert(
+  base_currency: "BTC",
+  counter_currency: "USD",
+  type: "buy",
+  jwt: "my-jwt"
 )
+
+# BloomTradeClient.convert will try to compute a rate from the local ExchangeRate records under that jwt.
+# If you don't pass a jwt, it will use default ExchangeRate records.
+result # ConvertResult
+
+# This will return a ConvertRequest object, which essentially contains the params you passed in BloomTradeClient.convert
+result.request # ConvertRequest
+
+# valid conversion
+result.success? # true
+result.rate # BigDecimal
+result.state # "valid"
+result.valid? # true
+
+# expired rates
+result.success? # true, even if expired, .success returns that the rate is there, but it's just expired
+result.expired? # true
+result.state # "valid"
+
+# can't find a currency
+result.success? # false
+result.message? # FOOBAR mid rate not available
+result.invalid? # true
+result.state # "invalid"
+
+# Get the rate
+result.rate # BigDecimal
+result.rate_currency # what currency the rate amount is in
 ```
 
 See `spec/acceptance` to see more examples of calls that can be made with `BloomTradeClient`.
