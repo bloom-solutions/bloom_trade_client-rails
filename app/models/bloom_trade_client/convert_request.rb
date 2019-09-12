@@ -9,6 +9,10 @@ module BloomTradeClient
     attribute :request_type, String, default: :default_request_type
     attribute :jwt, String
 
+    def currency_pair
+      [base_currency, counter_currency].join
+    end
+
     private
 
     def default_reserve_currency

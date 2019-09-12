@@ -19,5 +19,24 @@ module BloomTradeClient
       end
     end
 
+    describe "#success?" do
+      context "invalid?" do
+        subject do
+          described_class.new(state: described_class::STATES[:invalid])
+        end
+        it { is_expected.not_to be_success }
+      end
+
+      context "expired?" do
+        subject { described_class.new(expires_at: 1.minute.ago) }
+        it { is_expected.to be_success }
+      end
+
+      context "valid?" do
+        subject { described_class.new(state: "valid") }
+        it { is_expected.to be_success }
+      end
+    end
+
   end
 end

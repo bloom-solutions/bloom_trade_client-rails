@@ -20,6 +20,10 @@ module BloomTradeClient
       expires_at < Time.now.utc
     end
 
+    def success?
+      invalid? ? false : true
+    end
+
     STATES.keys.each do |key|
       define_method("#{key.to_s}?".to_sym) do
         state == STATES[key.to_sym]
