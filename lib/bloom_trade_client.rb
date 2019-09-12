@@ -6,7 +6,6 @@ require 'virtus'
 
 require 'bloom_trade_client/engine'
 require 'bloom_trade_client/client'
-require 'bloom_trade_client/exceptions'
 
 module BloomTradeClient
 
