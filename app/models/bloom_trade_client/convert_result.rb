@@ -24,6 +24,10 @@ module BloomTradeClient
       invalid? ? false : true
     end
 
+    def rate_currency
+      request.counter_currency
+    end
+
     STATES.keys.each do |key|
       define_method("#{key.to_s}?".to_sym) do
         state == STATES[key.to_sym]

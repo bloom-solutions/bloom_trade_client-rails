@@ -149,6 +149,7 @@ module BloomTradeClient
           it "calculates by using the reserve currency" do
             result = described_class.(request)
             expect(result.rate).to eq 2_000_000
+            expect(result.rate_currency).to eq "KRW"
             expect(result).not_to be_expired
             expect(result).to be_valid
           end
@@ -247,7 +248,9 @@ module BloomTradeClient
             end
 
             it "returns #{rate_type} rate" do
-              expect(described_class.(request).rate).to eq rate
+              result = described_class.(request)
+              expect(result.rate).to eq rate
+              expect(result.rate_currency).to eq "PHP"
             end
           end
         end
