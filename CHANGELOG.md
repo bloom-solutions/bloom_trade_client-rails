@@ -2,8 +2,30 @@
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to [Semantic
-Versioning](http://semver.org/spec/v2.0.0.html).
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+### Added
+- `ConvertRequest` model which encapsulates any calls in `BloomTradeClient.convert`
+- `ConvertResult#rate_currency` returns the currency of the `ConvertResult#rate` amount
+- `ConvertResult#success?` returns if a conversion is successful or not
+- `ConvertResult#state` returns either `valid, invalid` 
+- `ConvertResult#valid?` returns true when 
+- `ConvertResult#invalid?` returns true when a conversion went wrong
+- `ConvertResult#message` which returns a message if something went wrong
+- (dev only) `.rubocop.yml` and `.ruby-version`
+
+### Changed
+- `ConversionResult` to `ConvertResult` along with its factory
+- `BloomTradeClient.convert!` to `BloomTradeClient.convert`
+- `ConvertResult#expired?` returns true if the `expires_at` is `nil`, `nil` means the rate doesn't expire.
+- `ConvertResult#expires_at` now returns a `DateTime` object in UTC instead of `Integer`
+- `BloomTradeClient.convert` now raises an `ArgumentError` instead of returning nil if the passed `type` isn't `buy, mid, sell`
+
+### Removed
+- `ExpiredRateError`, which allows users of this gem to have information of the expired rate and softly lift up the state of the rate to the users instead of having total black out on what was the last rate.
+- Unnecessary helper, mailer and controller files.
+- Travis.yml
 
 ## [2.5.0] - 2019-06-04
 ### Added
