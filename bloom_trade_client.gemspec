@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec-sidekiq"
   s.add_development_dependency "sqlite3", "~> 1.3"
   s.add_development_dependency "stellar-sdk"
+  s.add_development_dependency "timecop"
   s.add_development_dependency "vcr", "~> 4.0"
   s.add_development_dependency "wait"
   s.add_development_dependency "webmock", "~> 3.4"
