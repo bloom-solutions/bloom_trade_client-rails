@@ -6,7 +6,7 @@ module BloomTradeClient
         origin_resolution = origin_resolution_from(request)
         dest_resolution = dest_resolution_from(request)
 
-        return if origin_resolution.empty? && dest_resolution.empty?
+        return if origin_resolution.empty? || dest_resolution.empty?
 
         origin_rate = rate_from(origin_resolution, request.request_type)
         dest_rate = rate_from(dest_resolution, request.request_type)
