@@ -182,6 +182,17 @@ module BloomTradeClient
             expect(result).to be_valid
           end
         end
+
+        context "only 1 pair exists" do
+          it "returns nil" do
+            result = described_class.(request)
+            expect(result.rate).to be_nil
+            expect(result.expires_at).to be_nil
+            expect(result).to be_invalid
+            expect(result).not_to be_success
+            expect(result.message).to eq "BTCKRW mid rate not available"
+          end
+        end
       end
 
       context "currency pair don't exist, unable to use reserve_currency" do
