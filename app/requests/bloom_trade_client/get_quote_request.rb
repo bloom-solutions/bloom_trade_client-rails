@@ -8,7 +8,7 @@ module BloomTradeClient
     attribute :amount_type, String, lazy: true, default: "base"
 
     def path
-      "/api/v1/quotes"
+      "/api/v2/quotes"
     end
 
     def default_action

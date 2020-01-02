@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://staging.trade.bloom.solutions/api/v1/quotes
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes
     body:
       encoding: UTF-8
       string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5"}}'
