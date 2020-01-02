@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://trade-staging.bloom.solutions/api/v1/quotes
+    uri: https://trade-staging.bloom.solutions/api/v2/quotes
     body:
       encoding: UTF-8
       string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5","amount_type":"base"}}'
@@ -55,7 +55,7 @@ http_interactions:
   recorded_at: Fri, 01 Mar 2019 07:59:06 GMT
 - request:
     method: put
-    uri: https://trade-staging.bloom.solutions/api/v1/quotes/KZHW
+    uri: https://trade-staging.bloom.solutions/api/v2/quotes/KZHW
     body:
       encoding: UTF-8
       string: '{"quote":{"destination_memo":"ABC","destination_address":"[stellar_address]"}}'

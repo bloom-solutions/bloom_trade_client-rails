@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://staging.trade.bloom.solutions/api/v1/quotes
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes
     body:
       encoding: UTF-8
       string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5","amount_type":"base"}}'
@@ -18,31 +18,39 @@ http_interactions:
   response:
     status:
       code: 200
-      message: OK
+      message: ''
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"7b3f374b27686585115001174c4276d3"
+      - W/"5f259a693853cac856b763a48c699d2c"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 76ab4391a75f4a848f72e887d6729135;o=0
       X-Content-Type-Options:
       - nosniff
+      X-Download-Options:
+      - noopen
       X-Frame-Options:
       - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
       X-Request-Id:
-      - 395fa50a-2d6e-49cb-bddc-04745edca39e
+      - c32b745c-d33d-4fbe-9023-bf0c597521f9
       X-Runtime:
-      - '0.125915'
+      - '0.353232'
       X-Xss-Protection:
       - 1; mode=block
-      Date:
-      - Fri, 24 Aug 2018 04:23:55 GMT
       Content-Length:
-      - '266'
+      - '327'
+      Date:
+      - Thu, 02 Jan 2020 06:37:46 GMT
     body:
       encoding: UTF-8
-      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","quoted_amount":"1.5","amount_type":"base","bx8_fee":"100.0","price":"335389.527434527587","total":"503084.29","expiration_timestamp":1535084935,"memo":"kbVyfSuMPgfUuuNnvHbYqGpldORN","quote_type":"sell"}'
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","quoted_amount":"1.5","amount_type":"base","bx8_fee":"20.0","price":"353340.986008558285158090264","total":"530011.47","expiration_timestamp":1577950666,"memo":"KVVZ","stellar_address":"[bloom_trade_address]","quote_type":"sell"}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2018 04:23:55 GMT
+  recorded_at: Thu, 02 Jan 2020 06:37:46 GMT
 recorded_with: VCR 4.0.0

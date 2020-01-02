@@ -1,53 +1,8 @@
 ---
 http_interactions:
 - request:
-    method: post
-    uri: https://staging.trade.bloom.solutions/api/v1/quotes
-    body:
-      encoding: UTF-8
-      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5"}}'
-    headers:
-      User-Agent:
-      - Typhoeus - https://github.com/typhoeus/typhoeus
-      Authorization:
-      - Bearer [bloom_trade_api_token]
-      Content-Type:
-      - application/json
-      Expect:
-      - ''
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Content-Type:
-      - application/json; charset=utf-8
-      Etag:
-      - W/"a9b43cd704c7cded37367a70b250b894"
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Request-Id:
-      - abc5b508-bcb6-4180-b57b-0e67082a1d6f
-      X-Runtime:
-      - '0.042947'
-      X-Xss-Protection:
-      - 1; mode=block
-      Date:
-      - Mon, 20 Aug 2018 04:21:26 GMT
-      Content-Length:
-      - '233'
-    body:
-      encoding: UTF-8
-      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","bx8_fee":"100.0","price":"336098.560518990192","total":"504147.840778485288","expiration_timestamp":1534739186,"memo":"PWJxyaVLCyipYJxVaVkpRWCIFEJz","quote_type":"sell"}'
-    http_version: 
-  recorded_at: Mon, 20 Aug 2018 04:21:26 GMT
-- request:
     method: put
-    uri: https://staging.trade.bloom.solutions/api/v1/quotes/PWJxyaVLCyipYJxVaVkpRWCIFEJz
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes/PWJxyaVLCyipYJxVaVkpRWCIFEJz
     body:
       encoding: UTF-8
       string: '{"quote":{"destination_memo":"V1234","destination_address":"G-1234"}}'
@@ -92,7 +47,7 @@ http_interactions:
   recorded_at: Mon, 20 Aug 2018 04:21:26 GMT
 - request:
     method: put
-    uri: https://staging.trade.bloom.solutions/api/v1/quotes/PWJxyaVLCyipYJxVaVkpRWCIFEJz
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes/PWJxyaVLCyipYJxVaVkpRWCIFEJz
     body:
       encoding: UTF-8
       string: '{"quote":{"destination_memo":"V1234","destination_address":"G-1234"}}'
@@ -134,4 +89,162 @@ http_interactions:
         already assigned"]}}'
     http_version: 
   recorded_at: Mon, 20 Aug 2018 04:21:27 GMT
+- request:
+    method: post
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"1.5","amount_type":"base"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"6fffd0c56de98ef729a5b61d91cd8dd6"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 6c9403e3921d4295c6965aaa0ddc0531;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 96be3e4b-cc4d-4012-9c3c-2f4d6bda06be
+      X-Runtime:
+      - '0.339783'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '327'
+      Date:
+      - Thu, 02 Jan 2020 06:38:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"1.5","quoted_amount":"1.5","amount_type":"base","bx8_fee":"20.0","price":"353340.986008558285158090264","total":"530011.47","expiration_timestamp":1577950685,"memo":"KJZJ","stellar_address":"[bloom_trade_address]","quote_type":"sell"}'
+    http_version: 
+  recorded_at: Thu, 02 Jan 2020 06:38:05 GMT
+- request:
+    method: put
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes/KJZJ
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"destination_memo":"V1234","destination_address":"G-1234"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"44136fa355b3678a1146ad16f7e8649e"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 2f93373d8bb845f486360a0b92b40cfe;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - aab52fe0-536e-403c-8c78-1bd3cd9f1229
+      X-Runtime:
+      - '0.020807'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '2'
+      Date:
+      - Thu, 02 Jan 2020 06:38:05 GMT
+    body:
+      encoding: UTF-8
+      string: "{}"
+    http_version: 
+  recorded_at: Thu, 02 Jan 2020 06:38:05 GMT
+- request:
+    method: put
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes/KJZJ
+    body:
+      encoding: UTF-8
+      string: '{"quote":{"destination_memo":"V1234","destination_address":"G-1234"}}'
+    headers:
+      User-Agent:
+      - Typhoeus - https://github.com/typhoeus/typhoeus
+      Authorization:
+      - Bearer [bloom_trade_api_token]
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 400
+      message: ''
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json; charset=utf-8
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 3cebda915207451e849ff7640014fa3d;o=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      X-Request-Id:
+      - 79028d0d-e292-480f-829e-54baa388d700
+      X-Runtime:
+      - '0.012539'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '101'
+      Date:
+      - Thu, 02 Jan 2020 06:38:05 GMT
+    body:
+      encoding: UTF-8
+      string: '{"errors":{"destination_memo":["is already assigned"],"destination_address":["is
+        already assigned"]}}'
+    http_version: 
+  recorded_at: Thu, 02 Jan 2020 06:38:05 GMT
 recorded_with: VCR 4.0.0

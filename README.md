@@ -159,7 +159,8 @@ See `spec/acceptance` to see more examples of calls that can be made with `Bloom
 
 ## Development
 
-Copy the config and customize it (especially if you're re-recording cassettes): `cp spec/config.yml{.sample,}`
+- Copy the config and customize it (especially if you're re-recording cassettes): `cp spec/config.yml{.sample,}`
+- `rails db:test:prepare`
 
 ## Releasing
 

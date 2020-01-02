@@ -46,7 +46,7 @@ RSpec.describe "Get Quote", vcr: { record: :once } do
       expect(response.amount).to eq 5_000
       expect(response.amount_type).to eq "counter"
       expect(response.quoted_amount)
-        .to eq (response.amount / response.price).round(10)
+        .to eq (response.amount / response.price).round(7)
       expect(response.price).to be_a BigDecimal
       expect(response.total).to be_a BigDecimal
       expect(response.bx8_fee).to be_a BigDecimal

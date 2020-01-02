@@ -5,7 +5,7 @@ module BloomTradeClient
     attribute :destination_address, String
 
     def path
-      "/api/v1/quotes/#{memo}"
+      "/api/v2/quotes/#{memo}"
     end
 
     def default_action

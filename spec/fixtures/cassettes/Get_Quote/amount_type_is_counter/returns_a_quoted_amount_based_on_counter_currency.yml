@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://staging.trade.bloom.solutions/api/v1/quotes
+    uri: https://staging.trade.bloom.solutions/api/v2/quotes
     body:
       encoding: UTF-8
       string: '{"quote":{"base_currency":"BTC","counter_currency":"PHP","quote_type":"sell","amount":"5000.0","amount_type":"counter"}}'
@@ -18,31 +18,39 @@ http_interactions:
   response:
     status:
       code: 200
-      message: OK
+      message: ''
     headers:
       Cache-Control:
       - max-age=0, private, must-revalidate
       Content-Type:
       - application/json; charset=utf-8
       Etag:
-      - W/"8401dc7e77333b9cc310418230c83474"
+      - W/"57fb92c0fe543933cc82c8036d137078"
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      X-Cloud-Trace-Context:
+      - 99f2e68bbb754c0cc74f12a2324428e8;o=0
       X-Content-Type-Options:
       - nosniff
+      X-Download-Options:
+      - noopen
       X-Frame-Options:
       - SAMEORIGIN
+      X-Permitted-Cross-Domain-Policies:
+      - none
       X-Request-Id:
-      - d4839fe9-3772-4a52-b787-8c6b4154aec8
+      - 0c41ee42-b162-43e3-918e-c83eb90d22ba
       X-Runtime:
-      - '0.273257'
+      - '0.325185'
       X-Xss-Protection:
       - 1; mode=block
-      Date:
-      - Fri, 24 Aug 2018 04:11:44 GMT
       Content-Length:
-      - '303'
+      - '328'
+      Date:
+      - Thu, 02 Jan 2020 06:37:47 GMT
     body:
       encoding: UTF-8
-      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"5000.0","quoted_amount":"0.0149334511","amount_type":"counter","bx8_fee":"100.0","price":"334818.7883842985934545454545454740030203932","total":"5000.0","expiration_timestamp":1535084204,"memo":"poCUHYUAGIUckfrvcffKpuSWQjRV","quote_type":"sell"}'
+      string: '{"base_currency":"BTC","counter_currency":"PHP","amount":"5000.0","quoted_amount":"0.0141493","amount_type":"counter","bx8_fee":"20.0","price":"353374.3358969200202","total":"5000.0","expiration_timestamp":1577950667,"memo":"KGFH","stellar_address":"[bloom_trade_address]","quote_type":"sell"}'
     http_version: 
-  recorded_at: Fri, 24 Aug 2018 04:11:44 GMT
+  recorded_at: Thu, 02 Jan 2020 06:37:47 GMT
 recorded_with: VCR 4.0.0
