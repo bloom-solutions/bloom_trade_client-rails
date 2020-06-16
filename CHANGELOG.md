@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Fixed
+- Loosen sidekiq version requirements. Allow 5.0 and up
+
 ## [4.0.0] - 2020-01-02
 ### Changed
 - Use quote v2 endpoints
@@ -17,8 +21,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - `ConvertRequest` model which encapsulates any calls in `BloomTradeClient.convert`
 - `ConvertResult#rate_currency` returns the currency of the `ConvertResult#rate` amount
 - `ConvertResult#success?` returns if a conversion is successful or not
-- `ConvertResult#state` returns either `valid, invalid` 
-- `ConvertResult#valid?` returns true when 
+- `ConvertResult#state` returns either `valid, invalid`
+- `ConvertResult#valid?` returns true when
 - `ConvertResult#invalid?` returns true when a conversion went wrong
 - `ConvertResult#message` which returns a message if something went wrong
 - (dev only) `.rubocop.yml` and `.ruby-version`
@@ -75,9 +79,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.18.0] - 2019-02-12
 ### Added
 - New `jwt_hash` column for `ExchangeRate`
-- New `jwt_callback` config which accepts an Object that responds to 
+- New `jwt_callback` config which accepts an Object that responds to
 `.call`.
-- New `SyncJob` that fetches rates globally and per JWT returned 
+- New `SyncJob` that fetches rates globally and per JWT returned
 - `BloomTradeClient::Convert` accepts an optional `jwt`.
 by `jwt_callback`
 
