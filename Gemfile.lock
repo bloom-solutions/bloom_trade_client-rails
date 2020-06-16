@@ -6,7 +6,7 @@ PATH
       api_client_base (~> 1.0)
       light-service (= 0.11.0)
       loofah (>= 2.2.3)
-      message_bus_client_worker (~> 1.0)
+      message_bus_client_worker (>= 1.0)
       rails (~> 5.2)
       sidekiq (>= 5.0)
       typhoeus (~> 1.3)
