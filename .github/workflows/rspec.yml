@@ -23,6 +23,6 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: RSpec
         run: |
-          bundle exec rails db:migrate RAILS_ENV=test
+          bundle exec rails db:schema:load RAILS_ENV=test
           cp spec/config.yml{.sample,}
           bundle exec rspec spec
