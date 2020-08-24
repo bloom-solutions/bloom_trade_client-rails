@@ -11,7 +11,7 @@ module BloomTradeClient
           jwt_hash: get_jwt_from(headers)
         ).first_or_initialize
 
-        exchange_rate.update_attributes!(
+        exchange_rate.update!(
           buy: data["buy"],
           sell: data["sell"],
           mid: data["mid"],

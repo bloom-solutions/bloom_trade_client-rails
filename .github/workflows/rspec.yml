@@ -1,5 +1,5 @@
 name: RSpec
-on: 
+on:
   push:
     pull_request:
       branches:
@@ -16,13 +16,13 @@ jobs:
       - name: Set up Ruby 2.6
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.3
+          ruby-version: 2.6.6
       - name: Bundler
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: RSpec
         run: |
-          bundle exec rails db:migrate RAILS_ENV=test
+          bundle exec rails db:schema:load RAILS_ENV=test
           cp spec/config.yml{.sample,}
           bundle exec rspec spec
