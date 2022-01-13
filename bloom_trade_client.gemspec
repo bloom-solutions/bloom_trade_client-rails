@@ -10,8 +10,8 @@ gem_description = "Mountable Rails Engine for building apps " \
 Gem::Specification.new do |s|
   s.name        = "bloom_trade_client-rails"
   s.version     = BloomTradeClient::VERSION
-  s.authors     = ["Ace Subido"]
-  s.email       = ["ace.subido@gmail.com"]
+  s.authors     = ["Bloom Developers"]
+  s.email       = ["dev@bloom.solutions"]
   s.homepage    = "https://github.com/bloom-solutions/bloom_trade_client-rails"
   s.summary     = gem_description
   s.description = gem_description
