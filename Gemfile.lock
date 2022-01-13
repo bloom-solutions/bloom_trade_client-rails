@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bloom_trade_client-rails (4.1.0)
+    bloom_trade_client-rails (4.2.0)
       addressable (~> 2.5)
       api_client_base (~> 1.0)
       light-service (>= 0.11.0, <= 0.15.0)
@@ -304,7 +304,6 @@ DEPENDENCIES
   bloom_trade_client-rails!
   factory_bot_rails (~> 4.11)
   fakeredis
-  light-service (= 0.15.0)
   pry
   rspec-rails (~> 5.0)
   rspec-sidekiq
