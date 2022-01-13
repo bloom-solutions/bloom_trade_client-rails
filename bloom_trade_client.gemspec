@@ -10,8 +10,8 @@ gem_description = "Mountable Rails Engine for building apps " \
 Gem::Specification.new do |s|
   s.name        = "bloom_trade_client-rails"
   s.version     = BloomTradeClient::VERSION
-  s.authors     = ["Ace Subido"]
-  s.email       = ["ace.subido@gmail.com"]
+  s.authors     = ["Bloom Developers"]
+  s.email       = ["dev@bloom.solutions"]
   s.homepage    = "https://github.com/bloom-solutions/bloom_trade_client-rails"
   s.summary     = gem_description
   s.description = gem_description
@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_bot_rails", "~> 4.11"
   s.add_development_dependency "fakeredis"
   s.add_development_dependency "pry"
-  s.add_development_dependency "rspec-rails", "~> 3.8"
+  s.add_development_dependency "rspec-rails", "~> 5.0"
   s.add_development_dependency "rspec-sidekiq"
   s.add_development_dependency "sqlite3", "~> 1.3"
   s.add_development_dependency "stellar-sdk"
