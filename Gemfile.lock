@@ -108,7 +108,7 @@ GEM
     erubi (1.10.0)
     ethon (0.15.0)
       ffi (>= 1.15.0)
-    excon (0.66.0)
+    excon (0.90.0)
     factory_bot (4.11.1)
       activesupport (>= 3.0.0)
     factory_bot_rails (4.11.1)
