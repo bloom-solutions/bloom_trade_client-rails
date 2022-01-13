@@ -108,8 +108,8 @@ to fulfill the quote.
 
 Sometimes you would want to run the sync job manually for testing purposes, here's how to do it:
 
-1. Make sure that your sidekiq worker is up and running, the job runs other asynchronous jobs.
-2. Open the rails console and call `BloomTradeClient::ExchangeRates::SyncJob.new.perform`.
+1. Open the rails console
+2. `BloomTradeClient::ExchangeRates::SyncJob.new.perform`
 
 #### Getting conversion and direct rates from a currency pair
 
