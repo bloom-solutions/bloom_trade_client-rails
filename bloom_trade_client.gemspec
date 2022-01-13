@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "addressable", "~> 2.5"
   s.add_dependency "api_client_base", "~> 1.0"
-  s.add_dependency "light-service", "0.11.0"
+  s.add_dependency "light-service", [">= 0.11.0", "<= 0.15.0"]
   s.add_dependency "loofah", ">= 2.2.3"
   s.add_dependency "message_bus_client_worker", ">= 1.0"
   s.add_dependency "rails", "~> 6.0"
