@@ -45,7 +45,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_bot_rails", "~> 4.11"
   s.add_development_dependency "fakeredis"
   s.add_development_dependency "pry"
-  s.add_development_dependency "rspec-rails", "~> 3.8"
+  s.add_development_dependency "rspec-rails", "~> 5.0"
   s.add_development_dependency "rspec-sidekiq"
   s.add_development_dependency "sqlite3", "~> 1.3"
   s.add_development_dependency "stellar-sdk"
