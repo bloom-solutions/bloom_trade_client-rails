@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency "light-service", [">= 0.11.0", "<= 0.15.0"]
   s.add_dependency "loofah", ">= 2.2.3"
   s.add_dependency "message_bus_client_worker", ">= 1.0"
-  s.add_dependency "rails", "~> 6.0"
+  s.add_dependency "rails", [">= 5.0", "< 7"]
   s.add_dependency "sidekiq", ">= 5.0"
   s.add_dependency "typhoeus", "~> 1.3"
   s.add_dependency "virtus", "~> 1.0"
