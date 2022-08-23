@@ -25,7 +25,8 @@ Gem::Specification.new do |s|
   ]
 
   if s.respond_to?(:metadata)
-    s.metadata["allowed_push_host"] = "https://gem.fury.io"
+    s.metadata["allowed_push_host"] = "https://rubygems.pkg.github.com/bloom-solutions"
+    s.metadata["github_repo"] = "ssh://github.com/bloom-solutions/bloom_trade_client-rails"
   else
     raise "RubyGems 2.0 or newer is required to protect against " \
       "public gem pushes."
