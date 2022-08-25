@@ -20,8 +20,9 @@ jobs:
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
+          bundle exec appraisal install
       - name: RSpec
         run: |
           bundle exec rails db:schema:load RAILS_ENV=test
           cp spec/config.yml{.sample,}
-          bundle exec rspec spec
+          bundle exec appraisal rspec spec
