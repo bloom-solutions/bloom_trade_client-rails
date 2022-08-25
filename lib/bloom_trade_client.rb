@@ -5,6 +5,7 @@ require "message_bus_client_worker"
 require "virtus"
 
 require "bloom_trade_client/engine"
+require "bloom_trade_client/message_bus_client_worker_version_evaluator"
 require "bloom_trade_client/client"
 
 module BloomTradeClient

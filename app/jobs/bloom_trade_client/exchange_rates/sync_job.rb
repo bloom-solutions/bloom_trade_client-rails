@@ -43,7 +43,7 @@ module BloomTradeClient
 
       def _run_global_subscriptions
         subscriptions(scope: :global).each do |host, subs|
-          MessageBusClientWorker::SubscriptionWorker.perform_async(host, subs)
+          enqueue_for host, subs
         end
       end
 
@@ -56,10 +56,18 @@ module BloomTradeClient
           auth_header = { "Authorization" => "Bearer #{jwt}" }
 
           subscriptions(scope: :org).each do |host, subs|
-            subs.merge!(headers: auth_header)
-            MessageBusClientWorker::SubscriptionWorker.perform_async(host, subs)
+            enqueue_for host, subs.merge(headers: auth_header)
           end
         end
+      end
+
+      def enqueue_for(host, subscriptions)
+        if MessageBusClientWorkerVersionEvaluator.version_2_1_1_and_greater?
+          subscriptions = subscriptions.to_json
+        end
+
+        MessageBusClientWorker::SubscriptionWorker.
+          perform_async(host, subscriptions)
       end
 
     end

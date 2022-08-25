@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
   s.add_dependency "api_client_base", "~> 1.0"
   s.add_dependency "light-service", [">= 0.11.0", "<= 0.15.0"]
   s.add_dependency "loofah", ">= 2.2.3"
-  s.add_dependency "message_bus_client_worker", ">= 1.0"
+  s.add_dependency "message_bus_client_worker", [">= 1", "< 3"]
   s.add_dependency "rails", [">= 5.0", "< 7"]
   s.add_dependency "sidekiq", ">= 5.0"
   s.add_dependency "typhoeus", "~> 1.3"
@@ -54,4 +54,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency "vcr", "~> 4.0"
   s.add_development_dependency "wait"
   s.add_development_dependency "webmock", "~> 3.4"
+  s.add_development_dependency "appraisal"
 end
